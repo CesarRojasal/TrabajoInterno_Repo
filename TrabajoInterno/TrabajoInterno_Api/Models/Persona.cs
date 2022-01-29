@@ -14,6 +14,7 @@ namespace TrabajoInterno_Api.Models
         /// Id persona
         /// </summary>
         [Display(Name = "id_persona")]
+        [Key]
         public int IdPersona { get; set; }
         /// <summary>
         /// Nombre persona

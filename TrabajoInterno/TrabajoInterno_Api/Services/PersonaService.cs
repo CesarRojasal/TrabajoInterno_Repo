@@ -52,16 +52,16 @@ namespace TrabajoInterno_Api.Services
             return res == 1;
         }
 
+        public async Task<List<Persona>> GetPersonas()
+          => await _context.Personas.FromSqlRaw("CALL SP_SELECT_PERSONA_ALL").ToListAsync();
+
         public async Task<List<Persona>> GetPersonaByEdadMayorIgual(int edad)
             //=> await _context.Personas.FromSqlRaw("CALL SP_SELECT_PERSONA_BY_EDAD_MAYORIGUAL({0})", edad).ToListAsync();
             => await _context.Personas.Where(p => p.Edad >= edad).ToListAsync();
 
         public async Task<Persona> GetPersonaByIdentificacion(string identificacion)
             => await _context.Personas.Where(p => p.Identificacion ==  identificacion).FirstAsync();
-
-        public async Task<List<Persona>> GetPersonas()
-            => await _context.Personas.FromSqlRaw("CALL SP_SELECT_PERSONA_ALL").ToListAsync();
-
+      
         public async Task<Persona> GetPersonaById(int id)
         {
             var persona = await _context.Personas.Where(p => p.IdPersona == id).FirstAsync();
