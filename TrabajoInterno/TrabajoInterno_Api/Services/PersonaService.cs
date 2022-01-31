@@ -1,76 +1,28 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TrabajoInterno_Api.Data;
+﻿using TrabajoInterno_Api.Interfaces;
 using TrabajoInterno_Api.Models;
 
 namespace TrabajoInterno_Api.Services
 {
-    public class PersonaService
+    public class PersonaService : GenericService<Persona>, IPersonaService
     {
-        private readonly MySqlDbContext _context;
-        public PersonaService(MySqlDbContext context)
+        private readonly IPersonaRepository personaRepository;
+
+        public PersonaService(IPersonaRepository personaRepository) : base(personaRepository)
         {
-            _context = context;
+            this.personaRepository = (IPersonaRepository)genericRepository;
         }
 
-        public async Task<Persona?> PostPersona(Persona persona)
-        {
-            var resp = await _context.Database.ExecuteSqlRawAsync("CALL SP_CREATE_PERSONA({0},{1},{2},{3},{4},{5})",
-                persona.Nombre,
-                persona.Apellido,
-                persona.Identificacion,
-                persona.Edad,
-                persona.CiudadNacimiento,
-                persona.Correo);
+        public async Task<bool> PersonaExists(int id)
+            => await personaRepository.PersonaExists(id);
 
-            if (resp != 1)
-                return null;
-
-            return _context.Personas.OrderBy(p => p.IdPersona).LastAsync().Result;
-        }
-
-        public async Task<Persona?> PutPersona(int id, Persona persona)
-        {
-            var resp = await _context.Database.ExecuteSqlRawAsync("CALL SP_UPDATE_PERSONA({0},{1},{2},{3},{4},{5},{6})",
-                persona.IdPersona,
-                persona.Nombre,
-                persona.Apellido,
-                persona.Identificacion,
-                persona.Edad,
-                persona.CiudadNacimiento,
-                persona.Correo);
-
-            if (resp != 1)
-                return null;
-
-            return _context.Personas.Where(p => p.IdPersona == id).First();
-        }
-
-        public async Task<bool> DeletePersona(int id)
-        {
-            var res = await _context.Database.ExecuteSqlRawAsync(@"CALL SP_DELETE_PERSONA({0})", id);
-            await _context.SaveChangesAsync();
-            return res == 1;
-        }
-
-        public async Task<List<Persona>> GetPersonas()
-          => await _context.Personas.FromSqlRaw("CALL SP_SELECT_PERSONA_ALL").ToListAsync();
+        public async Task<bool> PersonaExistsByIdentificacion(string identificacion)
+            => await personaRepository.PersonaExistsByIdentificacion(identificacion);
 
         public async Task<List<Persona>> GetPersonaByEdadMayorIgual(int edad)
-            //=> await _context.Personas.FromSqlRaw("CALL SP_SELECT_PERSONA_BY_EDAD_MAYORIGUAL({0})", edad).ToListAsync();
-            => await _context.Personas.Where(p => p.Edad >= edad).ToListAsync();
+            => await personaRepository.GetPersonaByEdadMayorIgual(edad);
 
         public async Task<Persona> GetPersonaByIdentificacion(string identificacion)
-            => await _context.Personas.Where(p => p.Identificacion ==  identificacion).FirstAsync();
-      
-        public async Task<Persona> GetPersonaById(int id)
-        {
-            var persona = await _context.Personas.Where(p => p.IdPersona == id).FirstAsync();
-            return persona;
-        }
-        public Task<bool> PersonaExists(int id)
-            => _context.Personas.Where(e => e.IdPersona == id).AnyAsync();
+            => await personaRepository.GetPersonaByIdentificacion(identificacion);
 
-        public Task<bool> PersonaExistsByIdentificacion(string identificacion)
-            => _context.Personas.Where(e => e.Identificacion == identificacion).AnyAsync();
     }
 }

@@ -8,28 +8,19 @@ namespace TrabajoInterno_Api.Data
 {
     public partial class MySqlDbContext : DbContext
     {
-        public MySqlDbContext()
-        {
-        }
-
         public MySqlDbContext(DbContextOptions<MySqlDbContext> options)
-            : base(options)
-        {
-        }
+            : base(options){}
 
         public virtual DbSet<Persona> Personas { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-             modelBuilder.UseCollation("utf8mb4_0900_ai_ci")
-                 .HasCharSet("utf8mb4");
-
-
+           
             modelBuilder.Entity<Persona>(entity =>
             {
               
                 entity.ToTable("persona");
-                entity.HasNoKey();
+                entity.HasKey(p => p.IdPersona);
 
                 entity.Property(e => e.IdPersona)
                     .HasColumnName("id_persona")
@@ -79,9 +70,7 @@ namespace TrabajoInterno_Api.Data
                     .HasComment("Nombre persona");
             });
 
-            OnModelCreatingPartial(modelBuilder);
         }
 
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
