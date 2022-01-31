@@ -1,19 +1,28 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
+using TrabajoInterno_Api.Common;
 using TrabajoInterno_Api.Data;
 using TrabajoInterno_Api.Interfaces;
+using TrabajoInterno_Api.Models;
 
 namespace TrabajoInterno_Api.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         protected readonly MySqlDbContext mySqlDbContext;
+        
 
         public GenericRepository(MySqlDbContext mySqlDbContext)
         {
             this.mySqlDbContext = mySqlDbContext;
         }
 
-        public async Task<bool> Delete(int id)
+        public GenericRepository()
+        {
+
+        }
+
+        public virtual async Task<bool> Delete(string id)
         {
             var entity = await GetById(id);
 
@@ -25,24 +34,24 @@ namespace TrabajoInterno_Api.Repositories
             return  true;
         }
 
-        public async Task<IEnumerable<TEntity>> GetAll()
+        public virtual async Task<IEnumerable<TEntity>> GetAll()
         {
             return await mySqlDbContext.Set<TEntity>().ToListAsync();
         }
 
-        public async Task<TEntity?> GetById(int id)
+        public virtual async Task<TEntity?> GetById(string id)
         {
-            return await mySqlDbContext.Set<TEntity>().FindAsync(keyValues: id);
+            return await mySqlDbContext.Set<TEntity>().FindAsync(keyValues: Convert.ToInt32(id));
         }
 
-        public async Task<TEntity> Insert(TEntity entity)
+        public virtual async Task<TEntity> Insert(TEntity entity)
         {
             mySqlDbContext.Set<TEntity>().Add(entity);
             await mySqlDbContext.SaveChangesAsync();
             return entity;
         }
 
-        public async Task<TEntity> Update(TEntity entity)
+        public virtual async Task<TEntity> Update(TEntity entity)
         {
             mySqlDbContext.Set<TEntity>().Update(entity);
             await mySqlDbContext.SaveChangesAsync();

@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using TrabajoInterno_Api.Common;
 using TrabajoInterno_Api.Data;
 using TrabajoInterno_Api.Interfaces;
 using TrabajoInterno_Api.Repositories;
@@ -22,6 +24,11 @@ options =>
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.28-mysql"));
 });
 
+builder.Services.Configure<ConnectionMdbSettings>(
+    builder.Configuration.GetSection("MongoDBTrabajoInternoSettings"));
+builder.Services.AddSingleton<IConnectionMdbSettings>
+                (d => d.GetRequiredService<IOptions<ConnectionMdbSettings>>().Value);
+
 //Add AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -32,6 +39,9 @@ builder.Services.AddMvc(option => option.EnableEndpointRouting = false)
 //Injeccion de dependencias
 builder.Services.AddScoped<IPersonaService, PersonaService>();
 builder.Services.AddScoped<IPersonaRepository, PersonaRepository>();
+builder.Services.AddScoped<IImagenService, ImagenService>();
+builder.Services.AddScoped<IImagenRepository, ImagenRepository>();
+
 
 var app = builder.Build();
 

@@ -8,8 +8,11 @@ namespace TrabajoInterno_Api.Common
     {
         public MapperProfile()
         {
-            CreateMap<Persona, PersonaDto>();//Get
-            CreateMap<PersonaDto, Persona>();//POST-PU
+            CreateMap<Persona, PersonaDto>();
+            CreateMap<PersonaDto, Persona>();
+
+            CreateMap<Imagen, ImagenDto>();
+            CreateMap<ImagenDto, Imagen>();
         }
     }
 }
