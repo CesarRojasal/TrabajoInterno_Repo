@@ -1,10 +1,10 @@
-using Microsoft.EntityFrameworkCore;
-using System;
+using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
 using System.Collections.Generic;
-using System.Data.Common;
-using System.Threading.Tasks;
 using TrabajoInterno_Api.Controllers;
-using TrabajoInterno_Api.Data;
+using TrabajoInterno_Api.DTOs;
+using TrabajoInterno_Api.Interfaces;
 using TrabajoInterno_Api.Models;
 using TrabajoInterno_Api.Services;
 using Xunit;
@@ -13,109 +13,151 @@ namespace TrabajoInterno_Test
 {
     public class PersonasTest
     {
-        [Fact(DisplayName = "Devolver una lista de todas las personas")]
-        public void GetAllPersonas()
+        #region Property  
+        private readonly PersonaController personaController;
+        private readonly Mock<IPersonaService> mockService;
+        private readonly Persona persona = new Persona()
         {
-            using (var context = GetContextWithData())
-            {
-                var service = new PersonaService(context);
+            Nombre = "Nombre", Apellido = "Apellido", Edad = 50, Correo = "Correo",
+                CiudadNacimiento = "Ciudad Nacimiento", Identificacion = "CC 01"
+            };
+        private readonly Persona personaRes = new Persona()
+        {
+            IdPersona = 1, Nombre = "Nombre", Apellido = "Apellido", Edad = 50, Correo = "Correo",
+                CiudadNacimiento = "Ciudad Nacimiento", Identificacion = "CC 01"
+            };
+        #endregion
 
-                var controller = new PersonasController(service);
-                var result =  (List<Persona>?)controller.GetPersonas().Result.Value;
+        public PersonasTest()
+        {
+            mockService = new Mock<IPersonaService>();
+            Mock<IMapper> mockMapper = new Mock<IMapper>();
 
-                Assert.NotNull(result);
-                Assert.True(result?.Count != 0);
-            }
+            var list = new List<Persona>();
+            list.Add(personaRes);
+
+            mockService.Setup(s => s.Insert(persona).Result).Returns(personaRes);
+            mockService.Setup(s => s.GetAll().Result).Returns(list);
+            mockService.Setup(s => s.GetById("1").Result).Returns(personaRes);
+            mockService.Setup(s => s.Update(persona).Result).Returns(personaRes);
+            mockService.Setup(s => s.PersonaExistsByIdentificacion(persona.Identificacion).Result).Returns(false);
+            mockService.Setup(s => s.PersonaExists(1).Result).Returns(true);
+            mockService.Setup(s => s.GetPersonaByIdentificacion(persona.Identificacion).Result).Returns(personaRes);
+            mockService.Setup(s => s.GetPersonaByEdadMayorIgual(persona.Edad).Result).Returns(list);
+            mockService.Setup(s => s.Delete(personaRes.IdPersona.ToString()).Result).Returns(true);
+
+            personaController = new PersonaController(mockMapper.Object, mockService.Object);
+        }
+        [Fact]
+        public async void GetAllPersona()
+        {
+
+            var resCall = await personaController.GetAll();
+            var res = resCall.Result as OkObjectResult;
+            var listres = res?.Value;
+
+            mockService.Verify(s => s.GetAll());
+            Assert.Equal(200, res?.StatusCode);
+            Assert.NotNull(listres);
         }
 
-        [Fact(DisplayName = "Devolver una persona creada")]
-        public void PostPersona()
+        [Fact]
+        public async void GetByIdPersona()
         {
-            using (var context = GetContextWithData())
-            {
-                var service = new PersonaService(context);
-                var controller = new PersonasController(service);
-                var _persona = new Persona()
-                {
-                    Nombre = "Nombre Test",
-                    Apellido = "Apellido Test",
-                    Identificacion = "CC 00000004",
-                    Edad = 30,
-                    CiudadNacimiento = "Ciudad Test",
-                    Correo = "Correo Test"
-                };
 
-                var result = controller.PostPersona(_persona).Result.Value;
+            var resCall = await personaController.GetById("1");
+            var res = resCall as OkObjectResult;
+            var persona = res?.Value;
 
-                Assert.NotNull(result);
-                Assert.Equal(_persona.Identificacion, result?.Identificacion);
-            }
+            mockService.Verify(s => s.GetById("1"));
+            Assert.Equal(200, res?.StatusCode);
+
         }
 
-        private MySqlDbContext GetContextWithData()
+        [Fact]
+        public async void GetByIdentificacion()
         {
-            var options = new DbContextOptionsBuilder<MySqlDbContext>()
-                              .UseInMemoryDatabase(Guid.NewGuid().ToString())
-                              .Options;
-            var context = new MySqlDbContext(options);
+            mockService.Setup(s => s.Insert(this.persona).Result).Returns(personaRes);
+            mockService.Setup(s => s.PersonaExistsByIdentificacion(persona.Identificacion).Result).Returns(true);
+            mockService.Setup(s => s.GetPersonaByIdentificacion(persona.Identificacion).Result).Returns(personaRes);
 
-            context.Database.ExecuteSqlRaw(@"CREATE PROCEDURE `SP_CREATE_PERSONA`(
-                IN nombreP VARCHAR(30),
-                IN apellidoP VARCHAR(30),
-                IN identificacionP VARCHAR(30),
-                IN edadP int,
-                IN ciudad_NacimientoP VARCHAR(30),
-                IN correoP VARCHAR(50)
-                )
-                INSERT INTO PERSONA(nombre, apellido, identificacion, edad, ciudad_Nacimiento, correo, activo, fecha_creacion, fecha_actualizacion)
-                VALUES(nombreP, apellidoP, identificacionP, edadP, ciudad_NacimientoP, correoP, 0, now(), now())");
+            var resCall = await personaController.GetPersonaByIdentificacion(personaRes.Identificacion);
+            var res = resCall as OkObjectResult;
 
-            context.Personas.Add(new Persona
+            mockService.Verify(s => s.GetPersonaByIdentificacion(persona.Identificacion));
+            Assert.Equal(200, res?.StatusCode);
+
+        }
+
+        [Fact]
+        public async void GetPersonaByEdadMayorIgual()
+        {
+            var resCall = await personaController.GetPersonaByEdadMayorIgual(personaRes.Edad);
+            var res = resCall as OkObjectResult;
+
+            mockService.Verify(s => s.GetPersonaByEdadMayorIgual(persona.Edad));
+            Assert.Equal(200, res?.StatusCode);
+
+        }
+
+        [Fact]
+        public async void PostPersona()
+        {
+            PersonaDto personaDto = new PersonaDto()
             {
-                IdPersona = 1,
-                Nombre = "Test Nombre",
-                Apellido = "Test Apellido",
-                Edad = 30,
-                Correo = "Test Correo",
-                Identificacion = "CC 00000001",
-                CiudadNacimiento = "Test Ciudad Nacimiento",
-                Activo = false,
-                FechaActualizacion = DateTime.Now,
-                FechaCreacion = DateTime.Now
-            });
-            context.Personas.Add(new Persona
+                Nombre = "Nombre",
+                Apellido = "Apellido",
+                Edad = 50,
+                Correo = "Correo",
+                CiudadNacimiento = "Ciudad Nacimiento",
+                Identificacion = "CC 01"
+            };
+
+            var resCall = await personaController.Post(personaDto);
+            var res = resCall.Result as OkObjectResult;
+            var personaCreated = res?.Value;
+
+            Assert.Equal(200, res?.StatusCode);
+        }
+
+        [Fact]
+        public async void PutPersona()
+        {
+
+            PersonaDto persona = new PersonaDto()
             {
-                IdPersona = 2,
-                Nombre = "Test Nombre2",
-                Apellido = "Test Apellido2",
-                Edad = 25,
-                Correo = "Test Correo2",
-                Identificacion = "CC 00000002",
-                CiudadNacimiento = "Test Ciudad Nacimiento2",
-                Activo = false,
-                FechaActualizacion = DateTime.Now,
-                FechaCreacion = DateTime.Now
-            });
-            context.Personas.Add(new Persona
-            {
-                IdPersona = 3,
-                Nombre = "Test Nombre3",
-                Apellido = "Test Apellido3",
-                Edad = 20,
-                Correo = "Test Correo3",
-                Identificacion = "CC 00000003",
-                CiudadNacimiento = "Test Ciudad Nacimiento3",
-                Activo = false,
-                FechaActualizacion = DateTime.Now,
-                FechaCreacion = DateTime.Now
-            });
+                Nombre = "Nombre",
+                Apellido = "Apellido",
+                Edad = 50,
+                Correo = "Correo",
+                CiudadNacimiento = "Ciudad Nacimiento",
+                Identificacion = "CC 01"
+            };
+            mockService.Setup(s => s.Insert(this.persona).Result).Returns(personaRes);
 
-           
+            persona.IdPersona = 1;
+            persona.Nombre = "Nombre Up";
 
+            var resCall = await personaController.Put(persona, 1);
+            var res = resCall as OkObjectResult;
+            var personaCreated = res?.Value;
 
-            context.SaveChanges();
+            Assert.Equal(200, res?.StatusCode);
+            
+        }
 
-            return context;
+        [Fact]
+        public async void DeletePersona()
+        {
+            mockService.Setup(s => s.GetById(personaRes.IdPersona.ToString()).Result).Returns(personaRes);
+
+            var resCall = await personaController.Delete(personaRes.IdPersona.ToString());
+            var res = resCall as OkObjectResult;
+            var persona = res?.Value;
+
+            mockService.Verify(s => s.Delete(personaRes.IdPersona.ToString()));
+            Assert.Equal(200, res?.StatusCode);
+
         }
     }
 }

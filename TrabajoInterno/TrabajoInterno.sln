@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrabajoInterno_Api", "TrabajoInterno_Api\TrabajoInterno_Api.csproj", "{3419F9F8-F0A8-43F3-9464-0623EC15943F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrabajoInterno_Test", "TrabajoInterno_Test\TrabajoInterno_Test.csproj", "{82310894-BBFA-4185-A0FF-0B7E20612263}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrabajoInterno_Test", "TrabajoInterno_Test\TrabajoInterno_Test.csproj", "{82310894-BBFA-4185-A0FF-0B7E20612263}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

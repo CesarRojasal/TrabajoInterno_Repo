@@ -21,10 +21,10 @@ namespace TrabajoInterno_Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult<IEnumerable<PersonaDto>>> GetAll()
         {
             var personas = await _personaService.GetAll();
-            return Ok(personas.Select(x => _mapper.Map<PersonaDto>(x)));
+            return new OkObjectResult(personas.Select(x => _mapper.Map<PersonaDto>(x)));
         }
 
         [HttpGet("{id}")]
@@ -33,11 +33,11 @@ namespace TrabajoInterno_Api.Controllers
             var persona = await _personaService.GetById(id);
             if(persona == null)
                 return NotFound();
-            return Ok(_mapper.Map<PersonaDto>(persona));
+            return new OkObjectResult(_mapper.Map<PersonaDto>(persona));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(PersonaDto personaDto)
+        public async Task<ActionResult<PersonaDto>> Post(PersonaDto personaDto)
         {
             if(!ModelState.IsValid)
                 return BadRequest("Por favor validar los datos");
@@ -47,7 +47,8 @@ namespace TrabajoInterno_Api.Controllers
             try
             {
                 var persona = await _personaService.Insert(_mapper.Map<Persona>(personaDto));
-                return Ok(persona);
+                personaDto = _mapper.Map<PersonaDto>(persona);
+                return new OkObjectResult(personaDto);
             }
             catch (Exception ex) {return StatusCode(500, ex.Message);}
         }
