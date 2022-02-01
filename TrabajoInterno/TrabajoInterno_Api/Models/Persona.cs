@@ -17,7 +17,7 @@ namespace TrabajoInterno_Api.Models
         public string? Apellido { get; set; }
         [Required]
         [Display(Name = "identificacion")]
-        public string? Identificacion { get; set; } 
+        public string Identificacion { get; set; } = string.Empty;
         [Required]
         [Display(Name = "edad")]
         public int Edad { get; set; }
