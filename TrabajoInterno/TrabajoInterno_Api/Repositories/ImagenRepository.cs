@@ -1,5 +1,5 @@
 ﻿using MongoDB.Driver;
-using TrabajoInterno_Api.Common;
+using TrabajoInterno_Api.Data;
 using TrabajoInterno_Api.Interfaces;
 using TrabajoInterno_Api.Models;
 

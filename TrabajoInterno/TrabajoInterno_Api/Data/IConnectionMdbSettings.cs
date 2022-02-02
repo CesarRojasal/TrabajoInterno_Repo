@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TrabajoInterno_Api.Common
+namespace TrabajoInterno_Api.Data
 {
     public interface IConnectionMdbSettings
     {
