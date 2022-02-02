@@ -1,5 +1,7 @@
 ﻿#nullable disable
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TrabajoInterno_Api.DTOs;
 using TrabajoInterno_Api.Interfaces;
@@ -21,6 +23,7 @@ namespace TrabajoInterno_Api.Controllers
         }
 
         [HttpGet]
+        [Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<ActionResult<IEnumerable<PersonaDto>>> GetAll()
         {
             var personas = await _personaService.GetAll();
