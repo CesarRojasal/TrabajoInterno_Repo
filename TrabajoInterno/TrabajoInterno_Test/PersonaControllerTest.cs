@@ -11,35 +11,34 @@ using Xunit;
 
 namespace TrabajoInterno_Test
 {
-    public class PersonasTest
+    public class PersonaControllerTest
     {
-        #region Property  
+        #region Property
         private readonly PersonaController personaController;
         private readonly Mock<IPersonaService> mockService;
-        private readonly Persona persona = new Persona()
+        private readonly Persona persona = new()
         {
             Nombre = "Nombre", Apellido = "Apellido", Edad = 50, Correo = "Correo",
                 CiudadNacimiento = "Ciudad Nacimiento", Identificacion = "CC 01"
             };
-        private readonly Persona personaRes = new Persona()
+        private readonly Persona personaRes = new()
         {
             IdPersona = 1, Nombre = "Nombre", Apellido = "Apellido", Edad = 50, Correo = "Correo",
                 CiudadNacimiento = "Ciudad Nacimiento", Identificacion = "CC 01"
             };
         #endregion
 
-        public PersonasTest()
+        public PersonaControllerTest()
         {
             mockService = new Mock<IPersonaService>();
-            Mock<IMapper> mockMapper = new Mock<IMapper>();
+            Mock<IMapper> mockMapper = new();
 
             personaController = new PersonaController(mockMapper.Object, mockService.Object);
         }
         [Fact]
         public async Task GetAllPersona()
         {
-            var list = new List<Persona>();
-            list.Add(personaRes);
+            var list = new List<Persona>{personaRes};
             mockService.Setup(s => s.GetAll().Result).Returns(list);
 
             var resCall = await personaController.GetAll();
@@ -57,7 +56,7 @@ namespace TrabajoInterno_Test
             mockService.Setup(s => s.GetById("1").Result).Returns(personaRes);
 
             var resCall = await personaController.GetById("1");
-            var res = resCall as OkObjectResult;
+            var res = resCall.Result as OkObjectResult;
 
             mockService.Verify(s => s.GetById("1"));
             Assert.Equal(200, res?.StatusCode);
@@ -71,7 +70,7 @@ namespace TrabajoInterno_Test
             mockService.Setup(s => s.GetPersonaByIdentificacion(persona.Identificacion).Result).Returns(personaRes);
 
             var resCall = await personaController.GetPersonaByIdentificacion(personaRes.Identificacion);
-            var res = resCall as OkObjectResult;
+            var res = resCall.Result as OkObjectResult;
 
             mockService.Verify(s => s.GetPersonaByIdentificacion(persona.Identificacion));
             Assert.Equal(200, res?.StatusCode);
@@ -81,12 +80,11 @@ namespace TrabajoInterno_Test
         [Fact]
         public async Task GetPersonaByEdadMayorIgual()
         {
-            var list = new List<Persona>();
-            list.Add(personaRes);
+            var list = new List<Persona>{personaRes};
             mockService.Setup(s => s.GetPersonaByEdadMayorIgual(persona.Edad).Result).Returns(list);
 
             var resCall = await personaController.GetPersonaByEdadMayorIgual(personaRes.Edad);
-            var res = resCall as OkObjectResult;
+            var res = resCall.Result as OkObjectResult;
 
             mockService.Verify(s => s.GetPersonaByEdadMayorIgual(persona.Edad));
             Assert.Equal(200, res?.StatusCode);
@@ -95,10 +93,10 @@ namespace TrabajoInterno_Test
         [Fact]
         public async Task PostPersona()
         {
-            mockService.Setup(s => s.Insert(this.persona).Result).Returns(personaRes);
+            mockService.Setup(s => s.Insert(persona).Result).Returns(personaRes);
             mockService.Setup(s => s.PersonaExistsByIdentificacion(persona.Identificacion).Result).Returns(false);
 
-            PersonaDto personaDto = new PersonaDto()
+            PersonaDto personaDto = new()
             {
                 Nombre = "Nombre",
                 Apellido = "Apellido",
@@ -117,11 +115,11 @@ namespace TrabajoInterno_Test
         [Fact]
         public async Task PutPersona()
         {
-            mockService.Setup(s => s.Insert(this.persona).Result).Returns(personaRes);
-            mockService.Setup(s => s.PersonaExists(1).Result).Returns(true);
+            mockService.Setup(s => s.Insert(persona).Result).Returns(personaRes);
             mockService.Setup(s => s.Update(persona).Result).Returns(personaRes);
+            mockService.Setup(s => s.PersonaExists(1).Result).Returns(true);
 
-            PersonaDto personaDto = new PersonaDto()
+            PersonaDto personaDto = new()
             {
                 IdPersona = 1,
                 Nombre = "Nombre Up",
@@ -133,7 +131,7 @@ namespace TrabajoInterno_Test
             };
 
             var resCall = await personaController.Put(personaDto, 1);
-            var res = resCall as OkObjectResult;
+            var res = resCall.Result as OkObjectResult;
 
             Assert.Equal(200, res?.StatusCode);
             
@@ -146,7 +144,7 @@ namespace TrabajoInterno_Test
             mockService.Setup(s => s.Delete(personaRes.IdPersona.ToString()).Result).Returns(true);
 
             var resCall = await personaController.Delete(personaRes.IdPersona.ToString());
-            var res = resCall as OkObjectResult;
+            var res = resCall.Result as OkObjectResult;
 
             mockService.Verify(s => s.Delete(personaRes.IdPersona.ToString()));
             Assert.Equal(200, res?.StatusCode);

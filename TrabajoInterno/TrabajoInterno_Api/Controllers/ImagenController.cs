@@ -20,23 +20,23 @@ namespace TrabajoInterno_Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult<IEnumerable<ImagenDto>>> GetAll()
         {
             var personas = await imagenService.GetAll();
-            return Ok(personas.Select(x => _mapper.Map<ImagenDto>(x)));
+            return new OkObjectResult(personas.Select(x => _mapper.Map<ImagenDto>(x)));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetById(string id)
+        public async Task<ActionResult<ImagenDto>> GetById(string id)
         {
             var imagen = await imagenService.GetById(id);
             if (imagen == null)
                 return NotFound();
-            return Ok(_mapper.Map<ImagenDto>(imagen));
+            return new OkObjectResult(_mapper.Map<ImagenDto>(imagen));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(ImagenDto imagenDto)
+        public async Task<ActionResult<ImagenDto>> Post(ImagenDto imagenDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Por favor validar los datos");
@@ -44,13 +44,13 @@ namespace TrabajoInterno_Api.Controllers
             try
             {
                 var imagen = await imagenService.Insert(_mapper.Map<Imagen>(imagenDto));
-                return Ok(imagen);
+                return new OkObjectResult(_mapper.Map<ImagenDto>(imagen));
             }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(ImagenDto imagenDto, string id)
+        public async Task<ActionResult<ImagenDto>> Put(ImagenDto imagenDto, string id)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Por favor validar los datos");
@@ -60,13 +60,13 @@ namespace TrabajoInterno_Api.Controllers
             try
             {
                 var imagen = await imagenService.Update(_mapper.Map<Imagen>(imagenDto));
-                return Ok(imagen);
+                return new OkObjectResult(_mapper.Map<ImagenDto>(imagen));
             }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult<string>> Delete(string id)
         {
             var imagen = await imagenService.GetById(id);
             if (imagen == null)
@@ -74,7 +74,7 @@ namespace TrabajoInterno_Api.Controllers
 
             var resp = await imagenService.Delete(id);
 
-            return Ok(string.Format("Imagen Eliminada: {0}", resp));
+            return new OkObjectResult(string.Format("Imagen Eliminada: {0}", resp));
         }
 
     }

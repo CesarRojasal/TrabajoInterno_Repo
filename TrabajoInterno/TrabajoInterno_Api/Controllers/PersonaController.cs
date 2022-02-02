@@ -28,7 +28,7 @@ namespace TrabajoInterno_Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetById(string id)
+        public async Task<ActionResult<PersonaDto>> GetById(string id)
         {
             var persona = await _personaService.GetById(id);
             if(persona == null)
@@ -54,7 +54,7 @@ namespace TrabajoInterno_Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(PersonaDto personaDto, int id)
+        public async Task<ActionResult<PersonaDto>> Put(PersonaDto personaDto, int id)
         {
             if(!ModelState.IsValid)
                 return BadRequest("Por favor validar los datos");
@@ -66,13 +66,13 @@ namespace TrabajoInterno_Api.Controllers
             try
             {
                 var persona = await _personaService.Update(_mapper.Map<Persona>(personaDto));
-                return Ok(persona);
+                return new OkObjectResult(_mapper.Map<PersonaDto>(persona));
             }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult<string>> Delete(string id)
         {
             var persona = await _personaService.GetById(id);
             if (persona == null)
@@ -80,20 +80,20 @@ namespace TrabajoInterno_Api.Controllers
 
             var resp = await _personaService.Delete(id);
 
-            return Ok(string.Format("Persona Eliminada: {0}", resp));
+            return new OkObjectResult(string.Format("Persona Eliminada: {0}", resp));
         }
 
         [HttpGet("ByEdadMayorIgual/{Edad}")]
-        public async Task<ActionResult> GetPersonaByEdadMayorIgual(int edad)
+        public async Task<ActionResult<IEnumerable<PersonaDto>>> GetPersonaByEdadMayorIgual(int edad)
         {
             var personas = await _personaService.GetPersonaByEdadMayorIgual(edad);
             if (personas == null)
                 return NotFound();
-            return Ok(personas.Select(x => _mapper.Map<PersonaDto>(x)));
+            return new OkObjectResult(personas.Select(x => _mapper.Map<PersonaDto>(x)));
         }
 
         [HttpGet("ByIdentificacion/{identificacion}")]
-        public async Task<ActionResult> GetPersonaByIdentificacion(string identificacion)
+        public async Task<ActionResult<PersonaDto>> GetPersonaByIdentificacion(string identificacion)
         {
             if (!await _personaService.PersonaExistsByIdentificacion(identificacion))
                 return BadRequest(string.Format("no existe la identificacion {0}", identificacion));
@@ -101,7 +101,7 @@ namespace TrabajoInterno_Api.Controllers
             var persona = await _personaService.GetPersonaByIdentificacion(identificacion);
             if (persona == null)
                 return NotFound();
-            return Ok(_mapper.Map<PersonaDto>(persona));
+            return new OkObjectResult(_mapper.Map<PersonaDto>(persona));
         }
 
 
