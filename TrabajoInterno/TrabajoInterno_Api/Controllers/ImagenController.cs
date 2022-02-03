@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TrabajoInterno_Abstraccion;
 using TrabajoInterno_Api.DTOs;
-using TrabajoInterno_Api.Interfaces;
-using TrabajoInterno_Api.Models;
+using TrabajoInterno_Entities;
 
 namespace TrabajoInterno_Api.Controllers
 {
@@ -34,6 +35,7 @@ namespace TrabajoInterno_Api.Controllers
         }
 
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<ActionResult<ImagenDto>> Post(ImagenDto imagenDto)
         {
             try { return new OkObjectResult(_mapper.Map<ImagenDto>(await imagenService.Insert(_mapper.Map<Imagen>(imagenDto))));}
@@ -41,6 +43,7 @@ namespace TrabajoInterno_Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<ActionResult<ImagenDto>> Put(ImagenDto imagenDto, string id)
         {
             try

@@ -4,8 +4,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using TrabajoInterno_Api.Interfaces;
-using TrabajoInterno_Api.Models;
+using TrabajoInterno_Abstraccion;
+using TrabajoInterno_Entities;
 
 namespace TrabajoInterno_Api.Controllers
 {
@@ -23,13 +23,13 @@ namespace TrabajoInterno_Api.Controllers
             this.configuration = configuration;
         }
 
-        [HttpPost("login/")]
+        [HttpPost]
         public IResult Login(UserLogin user)
         {
             if (!string.IsNullOrEmpty(user.Username) &&
                 !string.IsNullOrEmpty(user.Password))
             {
-                var loggedInUser = userService.Get(user);
+                var loggedInUser = userService?.Get(user);
                 if (loggedInUser is null) return Results.NotFound("User not found");
 
                 var claims = new[]

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using TrabajoInterno_Api.Models;
 using TrabajoInterno_Api.DTOs;
+using TrabajoInterno_Entities;
 
 namespace TrabajoInterno_Api.Common
 {

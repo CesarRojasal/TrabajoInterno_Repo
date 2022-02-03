@@ -4,6 +4,70 @@
     "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Api\\TrabajoInterno_Api.csproj": {}
   },
   "projects": {
+    "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Abstraccion\\TrabajoInterno_Abstraccion.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Abstraccion\\TrabajoInterno_Abstraccion.csproj",
+        "projectName": "TrabajoInterno_Abstraccion",
+        "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Abstraccion\\TrabajoInterno_Abstraccion.csproj",
+        "packagesPath": "C:\\Users\\cesar.rojas\\.nuget\\packages\\",
+        "outputPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Abstraccion\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\cesar.rojas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Entities\\TrabajoInterno_Entities.csproj": {
+                "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Entities\\TrabajoInterno_Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Api\\TrabajoInterno_Api.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -33,7 +97,23 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Abstraccion\\TrabajoInterno_Abstraccion.csproj": {
+                "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Abstraccion\\TrabajoInterno_Abstraccion.csproj"
+              },
+              "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_DataAccess\\TrabajoInterno_DataAccess.csproj": {
+                "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_DataAccess\\TrabajoInterno_DataAccess.csproj"
+              },
+              "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Entities\\TrabajoInterno_Entities.csproj": {
+                "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Entities\\TrabajoInterno_Entities.csproj"
+              },
+              "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Repository\\TrabajoInterno_Repository.csproj": {
+                "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Repository\\TrabajoInterno_Repository.csproj"
+              },
+              "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Services\\TrabajoInterno_Services.csproj": {
+                "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Services\\TrabajoInterno_Services.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -125,6 +205,289 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_DataAccess\\TrabajoInterno_DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_DataAccess\\TrabajoInterno_DataAccess.csproj",
+        "projectName": "TrabajoInterno_DataAccess",
+        "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_DataAccess\\TrabajoInterno_DataAccess.csproj",
+        "packagesPath": "C:\\Users\\cesar.rojas\\.nuget\\packages\\",
+        "outputPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_DataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\cesar.rojas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Entities\\TrabajoInterno_Entities.csproj": {
+                "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Entities\\TrabajoInterno_Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Entities\\TrabajoInterno_Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Entities\\TrabajoInterno_Entities.csproj",
+        "projectName": "TrabajoInterno_Entities",
+        "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Entities\\TrabajoInterno_Entities.csproj",
+        "packagesPath": "C:\\Users\\cesar.rojas\\.nuget\\packages\\",
+        "outputPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\cesar.rojas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.14.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Repository\\TrabajoInterno_Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Repository\\TrabajoInterno_Repository.csproj",
+        "projectName": "TrabajoInterno_Repository",
+        "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Repository\\TrabajoInterno_Repository.csproj",
+        "packagesPath": "C:\\Users\\cesar.rojas\\.nuget\\packages\\",
+        "outputPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\cesar.rojas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Abstraccion\\TrabajoInterno_Abstraccion.csproj": {
+                "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Abstraccion\\TrabajoInterno_Abstraccion.csproj"
+              },
+              "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_DataAccess\\TrabajoInterno_DataAccess.csproj": {
+                "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_DataAccess\\TrabajoInterno_DataAccess.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.14.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Services\\TrabajoInterno_Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Services\\TrabajoInterno_Services.csproj",
+        "projectName": "TrabajoInterno_Services",
+        "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Services\\TrabajoInterno_Services.csproj",
+        "packagesPath": "C:\\Users\\cesar.rojas\\.nuget\\packages\\",
+        "outputPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\cesar.rojas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Abstraccion\\TrabajoInterno_Abstraccion.csproj": {
+                "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Abstraccion\\TrabajoInterno_Abstraccion.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

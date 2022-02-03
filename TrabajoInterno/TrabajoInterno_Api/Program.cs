@@ -5,11 +5,10 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System.Text;
-using TrabajoInterno_Api.Common;
-using TrabajoInterno_Api.Data;
-using TrabajoInterno_Api.Interfaces;
-using TrabajoInterno_Api.Repositories;
-using TrabajoInterno_Api.Services;
+using TrabajoInterno_Abstraccion;
+using TrabajoInterno_DataAccess;
+using TrabajoInterno_Repository;
+using TrabajoInterno_Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -80,6 +79,8 @@ builder.Services.AddMvc(option => option.EnableEndpointRouting = false)
     .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
 //Injeccion de dependencias
+
+
 builder.Services.AddScoped<IPersonaService, PersonaService>();
 builder.Services.AddScoped<IPersonaRepository, PersonaRepository>();
 builder.Services.AddScoped<IImagenService, ImagenService>();

@@ -3713,6 +3713,75 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "TrabajoInterno_Abstraccion/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "TrabajoInterno_Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TrabajoInterno_Abstraccion.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TrabajoInterno_Abstraccion.dll": {}
+        }
+      },
+      "TrabajoInterno_DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.1",
+          "Pomelo.EntityFrameworkCore.MySql": "6.0.1",
+          "TrabajoInterno_Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TrabajoInterno_DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TrabajoInterno_DataAccess.dll": {}
+        }
+      },
+      "TrabajoInterno_Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MongoDB.Bson": "2.14.1"
+        },
+        "compile": {
+          "bin/placeholder/TrabajoInterno_Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TrabajoInterno_Entities.dll": {}
+        }
+      },
+      "TrabajoInterno_Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MongoDB.Driver": "2.14.1",
+          "TrabajoInterno_Abstraccion": "1.0.0",
+          "TrabajoInterno_DataAccess": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TrabajoInterno_Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TrabajoInterno_Repository.dll": {}
+        }
+      },
+      "TrabajoInterno_Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "TrabajoInterno_Abstraccion": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TrabajoInterno_Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TrabajoInterno_Services.dll": {}
+        }
       }
     }
   },
@@ -11370,6 +11439,31 @@
         "system.xml.xpath.xmldocument.4.0.1.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "TrabajoInterno_Abstraccion/1.0.0": {
+      "type": "project",
+      "path": "../TrabajoInterno_Abstraccion/TrabajoInterno_Abstraccion.csproj",
+      "msbuildProject": "../TrabajoInterno_Abstraccion/TrabajoInterno_Abstraccion.csproj"
+    },
+    "TrabajoInterno_DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../TrabajoInterno_DataAccess/TrabajoInterno_DataAccess.csproj",
+      "msbuildProject": "../TrabajoInterno_DataAccess/TrabajoInterno_DataAccess.csproj"
+    },
+    "TrabajoInterno_Entities/1.0.0": {
+      "type": "project",
+      "path": "../TrabajoInterno_Entities/TrabajoInterno_Entities.csproj",
+      "msbuildProject": "../TrabajoInterno_Entities/TrabajoInterno_Entities.csproj"
+    },
+    "TrabajoInterno_Repository/1.0.0": {
+      "type": "project",
+      "path": "../TrabajoInterno_Repository/TrabajoInterno_Repository.csproj",
+      "msbuildProject": "../TrabajoInterno_Repository/TrabajoInterno_Repository.csproj"
+    },
+    "TrabajoInterno_Services/1.0.0": {
+      "type": "project",
+      "path": "../TrabajoInterno_Services/TrabajoInterno_Services.csproj",
+      "msbuildProject": "../TrabajoInterno_Services/TrabajoInterno_Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -11388,7 +11482,12 @@
       "MySql.Data.EntityFrameworkCore >= 8.0.22",
       "Pomelo.EntityFrameworkCore.MySql >= 6.0.1",
       "Swashbuckle.AspNetCore >= 6.2.3",
-      "System.IdentityModel.Tokens.Jwt >= 6.15.1"
+      "System.IdentityModel.Tokens.Jwt >= 6.15.1",
+      "TrabajoInterno_Abstraccion >= 1.0.0",
+      "TrabajoInterno_DataAccess >= 1.0.0",
+      "TrabajoInterno_Entities >= 1.0.0",
+      "TrabajoInterno_Repository >= 1.0.0",
+      "TrabajoInterno_Services >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -11425,7 +11524,23 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Abstraccion\\TrabajoInterno_Abstraccion.csproj": {
+              "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Abstraccion\\TrabajoInterno_Abstraccion.csproj"
+            },
+            "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_DataAccess\\TrabajoInterno_DataAccess.csproj": {
+              "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_DataAccess\\TrabajoInterno_DataAccess.csproj"
+            },
+            "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Entities\\TrabajoInterno_Entities.csproj": {
+              "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Entities\\TrabajoInterno_Entities.csproj"
+            },
+            "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Repository\\TrabajoInterno_Repository.csproj": {
+              "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Repository\\TrabajoInterno_Repository.csproj"
+            },
+            "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Services\\TrabajoInterno_Services.csproj": {
+              "projectPath": "D:\\TrabajoInterno_Repo\\TrabajoInterno\\TrabajoInterno_Services\\TrabajoInterno_Services.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TrabajoInterno_Abstraccion;
 using TrabajoInterno_Api.Controllers;
 using TrabajoInterno_Api.DTOs;
-using TrabajoInterno_Api.Interfaces;
-using TrabajoInterno_Api.Models;
+using TrabajoInterno_Entities;
 using Xunit;
 
 namespace TrabajoInterno_Test
