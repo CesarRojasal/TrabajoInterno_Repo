@@ -13,7 +13,7 @@ namespace TrabajoInterno_Api.Services
             this.genericRepository = genericRepository;
         }
 
-        public async Task<bool> Delete(string id) => await genericRepository.Delete(id);
+        public virtual async Task<bool> Delete(string id) => await genericRepository.Delete(id);
 
         public async Task<IEnumerable<TEntity>> GetAll() => await genericRepository.GetAll();
 

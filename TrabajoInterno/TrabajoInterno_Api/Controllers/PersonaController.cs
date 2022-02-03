@@ -13,63 +13,45 @@ namespace TrabajoInterno_Api.Controllers
     [ApiController]
     public class PersonaController : ControllerBase
     {
-
-        private readonly IPersonaService _personaService;
-        public readonly IMapper _mapper;
+        private readonly IPersonaService personaService;
+        public readonly IMapper mapper;
         public PersonaController(IMapper mapper, IPersonaService personaService)
         {
-            _mapper = mapper;
-            _personaService = personaService;
+            this.mapper = mapper;
+            this.personaService = personaService;
         }
 
         [HttpGet]
-        [Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<ActionResult<IEnumerable<PersonaDto>>> GetAll()
         {
-            var personas = await _personaService.GetAll();
-            return new OkObjectResult(personas.Select(x => _mapper.Map<PersonaDto>(x)));
+            try { return new OkObjectResult((await personaService.GetAll()).Select(x => mapper.Map<PersonaDto>(x))); }
+            catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<PersonaDto>> GetById(string id)
         {
-            var persona = await _personaService.GetById(id);
-            if(persona == null)
-                return NotFound();
-            return new OkObjectResult(_mapper.Map<PersonaDto>(persona));
+            try { return new OkObjectResult(mapper.Map<PersonaDto>(await personaService.GetById(id))); }
+            catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
-        [HttpPost]
-        public async Task<ActionResult<PersonaDto>> Post(PersonaDto personaDto)
+        [HttpGet("ByEdadMayorIgual/{Edad}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
+        public async Task<ActionResult<IEnumerable<PersonaDto>>> GetPersonaByEdadMayorIgual(int edad)
         {
-            if(!ModelState.IsValid)
-                return BadRequest("Por favor validar los datos");
-            if (await _personaService.PersonaExistsByIdentificacion(personaDto.Identificacion))
-                return BadRequest(string.Format("Por favor validar la identificacion {0}", personaDto.Identificacion));
-
-            try
-            {
-                var persona = await _personaService.Insert(_mapper.Map<Persona>(personaDto));
-                personaDto = _mapper.Map<PersonaDto>(persona);
-                return new OkObjectResult(personaDto);
-            }
-            catch (Exception ex) {return StatusCode(500, ex.Message);}
+            try { return new OkObjectResult((await personaService.GetPersonaByEdadMayorIgual(edad)).Select(x => mapper.Map<PersonaDto>(x))); }
+            catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<PersonaDto>> Put(PersonaDto personaDto, int id)
+        [HttpGet("ByIdentificacion/{identificacion}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator,Standard")]
+        public async Task<ActionResult<PersonaDto>> GetPersonaByIdentificacion(string identificacion)
         {
-            if(!ModelState.IsValid)
-                return BadRequest("Por favor validar los datos");
-            if (personaDto.IdPersona != id)
-                return BadRequest("Por favor validar id");
-            if (!await _personaService.PersonaExists(id))
-                return NotFound(string.Format("La persona {0} no existe", id));
-
             try
             {
-                var persona = await _personaService.Update(_mapper.Map<Persona>(personaDto));
-                return new OkObjectResult(_mapper.Map<PersonaDto>(persona));
+                if (!await personaService.PersonaExistsByIdentificacion(identificacion))
+                    return BadRequest(string.Format("no existe la identificacion {0}", identificacion));
+                return new OkObjectResult(mapper.Map<PersonaDto>(await personaService.GetPersonaByIdentificacion(identificacion)));
             }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
@@ -77,36 +59,36 @@ namespace TrabajoInterno_Api.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<string>> Delete(string id)
         {
-            var persona = await _personaService.GetById(id);
-            if (persona == null)
-                return NotFound(string.Format("Persona {0} no encontrada", id));
-
-            var resp = await _personaService.Delete(id);
-
-            return new OkObjectResult(string.Format("Persona Eliminada: {0}", resp));
+            try { return new OkObjectResult(await personaService.Delete(id)); }
+            catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
-        [HttpGet("ByEdadMayorIgual/{Edad}")]
-        public async Task<ActionResult<IEnumerable<PersonaDto>>> GetPersonaByEdadMayorIgual(int edad)
+        [HttpPost]
+        public async Task<ActionResult<PersonaDto>> Post(PersonaDto personaDto)
         {
-            var personas = await _personaService.GetPersonaByEdadMayorIgual(edad);
-            if (personas == null)
-                return NotFound();
-            return new OkObjectResult(personas.Select(x => _mapper.Map<PersonaDto>(x)));
+            try
+            {
+                if (await personaService.PersonaExistsByIdentificacion(personaDto.Identificacion))
+                    return BadRequest(string.Format("Por favor validar la identificacion {0}", personaDto.Identificacion));
+                return new OkObjectResult(mapper.Map<PersonaDto>(await personaService.Insert(mapper.Map<Persona>(personaDto))));
+            }
+            catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
-        [HttpGet("ByIdentificacion/{identificacion}")]
-        public async Task<ActionResult<PersonaDto>> GetPersonaByIdentificacion(string identificacion)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<PersonaDto>> Put(PersonaDto personaDto, int id)
         {
-            if (!await _personaService.PersonaExistsByIdentificacion(identificacion))
-                return BadRequest(string.Format("no existe la identificacion {0}", identificacion));
+            try
+            {
+                if (personaDto.IdPersona != id)
+                    return BadRequest("Por favor validar id");
+                if (!await personaService.PersonaExists(id))
+                    return NotFound(string.Format("La persona {0} no existe", id));
 
-            var persona = await _personaService.GetPersonaByIdentificacion(identificacion);
-            if (persona == null)
-                return NotFound();
-            return new OkObjectResult(_mapper.Map<PersonaDto>(persona));
+                return new OkObjectResult(mapper.Map<PersonaDto>(await personaService.Update(mapper.Map<Persona>(personaDto))));
+            }
+            catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
-
 
     }
 }

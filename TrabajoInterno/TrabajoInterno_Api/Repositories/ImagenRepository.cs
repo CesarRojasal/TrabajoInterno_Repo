@@ -16,6 +16,10 @@ namespace TrabajoInterno_Api.Repositories
             this.mongoDbContext = database.GetCollection<Imagen>(mongoDbContext.Collection);
         }
 
+        public async Task<bool> DeleteImagenByIdPersona(int idPersona) 
+            => await mongoDbContext.DeleteManyAsync(d => d.Id_Persona == idPersona) != null;
+
+
         public override async Task<bool> Delete(string id) => await mongoDbContext.DeleteOneAsync(i => i.Id == id.ToString()) != null;
 
         public override async Task<IEnumerable<Imagen>> GetAll() => await mongoDbContext.Find(d => true).ToListAsync();

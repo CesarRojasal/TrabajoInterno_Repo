@@ -57,7 +57,7 @@ namespace TrabajoInterno_Test
             Assert.NotNull(listres);
         }
         [Fact]
-        public async Task GetByIdPersona()
+        public async Task GetByIdImagen()
         {
             mockService.Setup(s => s.GetById("1").Result).Returns(imagenRes);
 
@@ -69,7 +69,7 @@ namespace TrabajoInterno_Test
 
         }
         [Fact]
-        public async Task PostPersona()
+        public async Task PostImagen()
         {
             mockService.Setup(s => s.Insert(this.imagen).Result).Returns(imagenRes);
 
@@ -87,7 +87,7 @@ namespace TrabajoInterno_Test
         }
 
         [Fact]
-        public async Task PutPersona()
+        public async Task PutImagen()
         {
             mockService.Setup(s => s.Insert(imagen).Result).Returns(imagenRes);
             mockService.Setup(s => s.Update(imagen).Result).Returns(imagenRes);
@@ -109,7 +109,7 @@ namespace TrabajoInterno_Test
         }
 
         [Fact]
-        public async Task DeletePersona()
+        public async Task DeleteImagen()
         {
             mockService.Setup(s => s.GetById(imagenRes.Id.ToString()).Result).Returns(imagenRes);
             mockService.Setup(s => s.Delete(imagenRes.Id.ToString()).Result).Returns(true);
