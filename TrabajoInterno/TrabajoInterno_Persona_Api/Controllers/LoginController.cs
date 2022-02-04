@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -13,9 +14,11 @@ namespace TrabajoInterno_Api.Controllers
     public class LoginController : ControllerBase
     {
         private readonly IUserService userService;
+        public readonly IMapper _mapper;
         private readonly IConfiguration configuration;
-        public LoginController(IUserService userService, IConfiguration configuration)
+        public LoginController(IMapper mapper, IUserService userService, IConfiguration configuration)
         {
+            _mapper = mapper;
             this.userService = userService;
             this.configuration = configuration;
         }
