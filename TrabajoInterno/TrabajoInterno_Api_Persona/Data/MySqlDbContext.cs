@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using TrabajoInterno_Api.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using TrabajoInterno_Api_Persona.Model;
 
-namespace TrabajoInterno_Api.Data
+namespace TrabajoInterno_Api_Persona.Data
 {
     public partial class MySqlDbContext : DbContext
     {
@@ -26,10 +23,6 @@ namespace TrabajoInterno_Api.Data
                     .HasColumnName("id_persona")
                     .HasComment("Id persona");
 
-                entity.Property(e => e.Activo)
-                    .HasColumnName("activo")
-                    .HasComment("Persona activa");
-
                 entity.Property(e => e.Apellido)
                     .HasMaxLength(30)
                     .HasColumnName("apellido")
@@ -48,16 +41,6 @@ namespace TrabajoInterno_Api.Data
                 entity.Property(e => e.Edad)
                     .HasColumnName("edad")
                     .HasComment("Edad persona");
-
-                entity.Property(e => e.FechaActualizacion)
-                    .HasColumnType("datetime")
-                    .HasColumnName("fecha_actualizacion")
-                    .HasComment("fecha de ultima actualizacion");
-
-                entity.Property(e => e.FechaCreacion)
-                    .HasColumnType("datetime")
-                    .HasColumnName("fecha_creacion")
-                    .HasComment("fecha de creacion");
 
                 entity.Property(e => e.Identificacion)
                     .HasMaxLength(30)

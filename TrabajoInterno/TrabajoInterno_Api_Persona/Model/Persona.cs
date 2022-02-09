@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace TrabajoInterno_Api.Models
+namespace TrabajoInterno_Api_Persona.Model
 {
     public partial class Persona
     {
@@ -27,12 +25,7 @@ namespace TrabajoInterno_Api.Models
         [Required]
         [Display(Name = "correo")]
         public string? Correo { get; set; }
-        [Display(Name = "activo")]
-        public bool Activo { get; set; }
-        [Display(Name = "fecha_creacion")]
-        public DateTime? FechaCreacion { get; set; }
-        [Display(Name = "fecha_actualizacion")]
-        public DateTime? FechaActualizacion { get; set; }
+        //public string? PersonaGuid { get; set; }
 
     }
 }

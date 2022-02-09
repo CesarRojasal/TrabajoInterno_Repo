@@ -24,6 +24,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TrabajoInterno_Api\TrabajoInterno_Api.csproj" />
+    <ProjectReference Include="..\TrabajoInterno_Api_Imagen\TrabajoInterno_Api_Imagen.csproj" />
+    <ProjectReference Include="..\TrabajoInterno_Api_Persona\TrabajoInterno_Api_Persona.csproj" />
   </ItemGroup>
 
 </Project>

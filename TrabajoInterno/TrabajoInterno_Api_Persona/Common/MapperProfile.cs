@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using TrabajoInterno_Api_Persona.DTOs;
-using TrabajoInterno_Entities;
+using TrabajoInterno_Api_Persona.Model;
 
 namespace TrabajoInterno_Api_Persona.Common
 {

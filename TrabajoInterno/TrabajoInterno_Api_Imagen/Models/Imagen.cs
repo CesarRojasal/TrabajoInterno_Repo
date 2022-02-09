@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 
-namespace TrabajoInterno_Entities
+namespace TrabajoInterno_Api_Imagen.Models
 {
     public class Imagen
     {

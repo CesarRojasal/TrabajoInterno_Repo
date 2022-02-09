@@ -7,12 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="MySqlDbContext.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
   </ItemGroup>
 
   <ItemGroup>

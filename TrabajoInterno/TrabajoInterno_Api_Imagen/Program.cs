@@ -4,9 +4,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System.Text;
-using TrabajoInterno_Abstraccion;
-using TrabajoInterno_DataAccess;
-using TrabajoInterno_Repository;
+using TrabajoInterno_Api_Imagen.Data;
+using TrabajoInterno_Api_Imagen.Interfaces;
+using TrabajoInterno_Api_Imagen.Repository;
 using TrabajoInterno_Services;
 
 var builder = WebApplication.CreateBuilder(args);

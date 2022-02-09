@@ -13,7 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TrabajoInterno_Abstraccion\TrabajoInterno_Abstraccion.csproj" />
+    <Compile Remove="PersonaService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
   </ItemGroup>
 
 </Project>

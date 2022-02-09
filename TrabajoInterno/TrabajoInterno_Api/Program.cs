@@ -1,6 +1,6 @@
-using TrabajoInterno_Abstraccion;
-using TrabajoInterno_Repository;
-using TrabajoInterno_Services;
+using TrabajoInterno_Api.Interfaces;
+using TrabajoInterno_Api.Repositories;
+using TrabajoInterno_Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

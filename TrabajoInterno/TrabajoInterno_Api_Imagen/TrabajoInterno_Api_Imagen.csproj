@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -16,15 +16,9 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="MongoDB.Driver" Version="2.14.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\TrabajoInterno_Abstraccion\TrabajoInterno_Abstraccion.csproj" />
-    <ProjectReference Include="..\TrabajoInterno_DataAccess\TrabajoInterno_DataAccess.csproj" />
-    <ProjectReference Include="..\TrabajoInterno_Entities\TrabajoInterno_Entities.csproj" />
-    <ProjectReference Include="..\TrabajoInterno_Repository\TrabajoInterno_Repository.csproj" />
-    <ProjectReference Include="..\TrabajoInterno_Services\TrabajoInterno_Services.csproj" />
   </ItemGroup>
 
 </Project>

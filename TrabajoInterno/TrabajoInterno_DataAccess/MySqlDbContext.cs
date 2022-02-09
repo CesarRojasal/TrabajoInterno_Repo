@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TrabajoInterno_Entities;
 
 namespace TrabajoInterno_DataAccess
 {

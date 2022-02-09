@@ -7,7 +7,7 @@ namespace TrabajoInterno_Api.Repositories
     {
         private static List<User> Users = new()
         {
-            new() { Username = "_admin", EmailAddress = "admin@email.com", Password = "MyPass_w0rd", GivenName = "Name", Surname = "Surname", Role = "Administrator" },
+            new() { Username = "admin", EmailAddress = "admin@email.com", Password = "pass", GivenName = "Name", Surname = "Surname", Role = "Administrator" },
             new() { Username = "_standard", EmailAddress = "standard@email.com", Password = "MyPass_w0rd", GivenName = "Name {ñ", Surname = "Burton", Role = "Standard" },
         };
 

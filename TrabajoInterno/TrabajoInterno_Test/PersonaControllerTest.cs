@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TrabajoInterno_Abstraccion;
-using TrabajoInterno_Api.Controllers;
-using TrabajoInterno_Api.DTOs;
-using TrabajoInterno_Entities;
+using TrabajoInterno_Api_Persona.Controllers;
+using TrabajoInterno_Api_Persona.DTOs;
+using TrabajoInterno_Api_Persona.Interfaces;
+using TrabajoInterno_Api_Persona.Model;
 using Xunit;
 
 namespace TrabajoInterno_Test
@@ -16,12 +16,12 @@ namespace TrabajoInterno_Test
         #region Property
         private readonly PersonaController personaController;
         private readonly Mock<IPersonaService> mockService;
-        private readonly Persona persona = new()
+        private readonly PersonaDto persona = new()
         {
             Nombre = "Nombre", Apellido = "Apellido", Edad = 50, Correo = "Correo",
                 CiudadNacimiento = "Ciudad Nacimiento", Identificacion = "CC 01"
             };
-        private readonly Persona personaRes = new()
+        private readonly PersonaDto personaRes = new()
         {
             IdPersona = 1, Nombre = "Nombre", Apellido = "Apellido", Edad = 50, Correo = "Correo",
                 CiudadNacimiento = "Ciudad Nacimiento", Identificacion = "CC 01"
@@ -33,12 +33,12 @@ namespace TrabajoInterno_Test
             mockService = new Mock<IPersonaService>();
             Mock<IMapper> mockMapper = new();
 
-            personaController = new PersonaController(mockMapper.Object, mockService.Object);
+            personaController = new PersonaController(mockService.Object);
         }
         [Fact]
         public async Task GetAllPersona()
         {
-            var list = new List<Persona>{personaRes};
+            var list = new List<PersonaDto>{personaRes};
             mockService.Setup(s => s.GetAll().Result).Returns(list);
 
             var resCall = await personaController.GetAll();
@@ -80,7 +80,7 @@ namespace TrabajoInterno_Test
         [Fact]
         public async Task GetPersonaByEdadMayorIgual()
         {
-            var list = new List<Persona>{personaRes};
+            var list = new List<PersonaDto>{personaRes};
             mockService.Setup(s => s.GetPersonaByEdadMayorIgual(persona.Edad).Result).Returns(list);
 
             var resCall = await personaController.GetPersonaByEdadMayorIgual(personaRes.Edad);
@@ -141,7 +141,7 @@ namespace TrabajoInterno_Test
         public async Task DeletePersona()
         {
             mockService.Setup(s => s.GetById(personaRes.IdPersona.ToString()).Result).Returns(personaRes);
-            mockService.Setup(s => s.Delete(personaRes.IdPersona.ToString()).Result).Returns(true);
+            mockService.Setup(s => s.Delete(personaRes.IdPersona.ToString()).Result).Returns((true, 0));
 
             var resCall = await personaController.Delete(personaRes.IdPersona.ToString());
             var res = resCall.Result as OkObjectResult;

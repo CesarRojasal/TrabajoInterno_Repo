@@ -3,8 +3,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using TrabajoInterno_Abstraccion;
-using TrabajoInterno_Entities;
+using TrabajoInterno_Api.Interfaces;
+using TrabajoInterno_Api.Models;
 
 namespace TrabajoInterno_Api.Controllers
 {

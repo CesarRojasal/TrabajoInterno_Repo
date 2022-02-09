@@ -25,12 +25,7 @@ namespace TrabajoInterno_Entities
         [Required]
         [Display(Name = "correo")]
         public string? Correo { get; set; }
-        [Display(Name = "activo")]
-        public bool Activo { get; set; }
-        [Display(Name = "fecha_creacion")]
-        public DateTime? FechaCreacion { get; set; }
-        [Display(Name = "fecha_actualizacion")]
-        public DateTime? FechaActualizacion { get; set; }
+        public string PersonaGuid { get; set; } = string.Empty;
 
     }
 }

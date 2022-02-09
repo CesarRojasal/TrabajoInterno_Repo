@@ -3,9 +3,9 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TrabajoInterno_Abstraccion;
 using TrabajoInterno_Api_Persona.DTOs;
-using TrabajoInterno_Entities;
+using TrabajoInterno_Api_Persona.Interfaces;
+using TrabajoInterno_Api_Persona.Model;
 
 namespace TrabajoInterno_Api_Persona.Controllers
 {
@@ -14,31 +14,29 @@ namespace TrabajoInterno_Api_Persona.Controllers
     public class PersonaController : ControllerBase
     {
         private readonly IPersonaService personaService;
-        public readonly IMapper mapper;
-        public PersonaController(IMapper mapper, IPersonaService personaService)
+        public PersonaController(IPersonaService personaService)
         {
-            this.mapper = mapper;
             this.personaService = personaService;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PersonaDto>>> GetAll()
         {
-            try { return new OkObjectResult((await personaService.GetAll()).Select(x => mapper.Map<PersonaDto>(x))); }
+            try { return new OkObjectResult(await personaService.GetAll()); }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<PersonaDto>> GetById(string id)
         {
-            try { return new OkObjectResult(mapper.Map<PersonaDto>(await personaService.GetById(id))); }
+            try { return new OkObjectResult(await personaService.GetById(id)); }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
         [HttpGet("ByEdadMayorIgual/{Edad}")]
         public async Task<ActionResult<IEnumerable<PersonaDto>>> GetPersonaByEdadMayorIgual(int edad)
         {
-            try { return new OkObjectResult((await personaService.GetPersonaByEdadMayorIgual(edad)).Select(x => mapper.Map<PersonaDto>(x))); }
+            try { return new OkObjectResult(await personaService.GetPersonaByEdadMayorIgual(edad)); }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
@@ -49,7 +47,7 @@ namespace TrabajoInterno_Api_Persona.Controllers
             {
                 if (!await personaService.PersonaExistsByIdentificacion(identificacion))
                     return BadRequest(string.Format("no existe la identificacion {0}", identificacion));
-                return new OkObjectResult(mapper.Map<PersonaDto>(await personaService.GetPersonaByIdentificacion(identificacion)));
+                return new OkObjectResult(await personaService.GetPersonaByIdentificacion(identificacion));
             }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
@@ -57,7 +55,10 @@ namespace TrabajoInterno_Api_Persona.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<string>> Delete(string id)
         {
-            try { return new OkObjectResult(await personaService.Delete(id)); }
+            try { 
+                 var result = await personaService.Delete(id); 
+                return new OkObjectResult(result);
+            }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
@@ -69,7 +70,7 @@ namespace TrabajoInterno_Api_Persona.Controllers
             {
                 if (await personaService.PersonaExistsByIdentificacion(personaDto.Identificacion))
                     return BadRequest(string.Format("Por favor validar la identificacion {0}", personaDto.Identificacion));
-                return new OkObjectResult(mapper.Map<PersonaDto>(await personaService.Insert(mapper.Map<Persona>(personaDto))));
+                return new OkObjectResult(await personaService.Insert(personaDto));
             }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
@@ -85,7 +86,7 @@ namespace TrabajoInterno_Api_Persona.Controllers
                 if (!await personaService.PersonaExists(id))
                     return NotFound(string.Format("La persona {0} no existe", id));
 
-                return new OkObjectResult(mapper.Map<PersonaDto>(await personaService.Update(mapper.Map<Persona>(personaDto))));
+                return new OkObjectResult(await personaService.Update(personaDto));
             }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
         }

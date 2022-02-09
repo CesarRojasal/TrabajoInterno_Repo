@@ -4,7 +4,7 @@ namespace TrabajoInterno_Api_Imagen.DTOs
 {
     public class ImagenDto
     {
-        public string? Id { get; set; }
+        public string Id { get; set; } = string.Empty;
         [Required(ErrorMessage = "El campo  Id_Persona es requerido")]
         public int Id_Persona { get; set; }
         [Required(ErrorMessage = "El campo  Nombre es requerido")]

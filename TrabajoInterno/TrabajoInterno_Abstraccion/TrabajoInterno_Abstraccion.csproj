@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="IPersonaRepository.cs" />
+    <Compile Remove="IPersonaService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TrabajoInterno_Entities\TrabajoInterno_Entities.csproj" />
   </ItemGroup>
 

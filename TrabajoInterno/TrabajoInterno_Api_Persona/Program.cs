@@ -5,10 +5,12 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System.Text;
-using TrabajoInterno_Abstraccion;
-using TrabajoInterno_DataAccess;
-using TrabajoInterno_Repository;
-using TrabajoInterno_Services;
+using TrabajoInterno_Api_Persona.Data;
+using TrabajoInterno_Api_Persona.Interfaces;
+using TrabajoInterno_Api_Persona.Remote.RemoteInterfaces;
+using TrabajoInterno_Api_Persona.Remote.RemoteService;
+using TrabajoInterno_Api_Persona.Repository;
+using TrabajoInterno_Api_Persona.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,13 +68,16 @@ options =>
     options.UseMySql(builder.Configuration.GetConnectionString("MySQLTrabajoInternoAppCon"),
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.28-mysql"));
 });
-builder.Services.Configure<ConnectionMdbSettings>(
-    builder.Configuration.GetSection("MongoDBTrabajoInternoSettings"));
-builder.Services.AddSingleton<IConnectionMdbSettings>
-                (d => d.GetRequiredService<IOptions<ConnectionMdbSettings>>().Value);
 
 //Add AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+//HttpClient
+
+builder.Services.AddHttpClient("Imagenes", config =>
+{
+    config.BaseAddress = new Uri(builder.Configuration["Services:Imagenes"]);
+});
 
 //Use Json
 builder.Services.AddMvc(option => option.EnableEndpointRouting = false)
@@ -82,8 +87,7 @@ builder.Services.AddMvc(option => option.EnableEndpointRouting = false)
 
 builder.Services.AddScoped<IPersonaService, PersonaService>();
 builder.Services.AddScoped<IPersonaRepository, PersonaRepository>();
-builder.Services.AddScoped<IPersonaRepository, PersonaRepository>();
-builder.Services.AddScoped<IImagenRepository, ImagenRepository>();
+builder.Services.AddScoped<IRemoteImagenService, RemoteImagenService>();
 builder.Services.AddSingleton(builder.Configuration);
 
 var app = builder.Build();

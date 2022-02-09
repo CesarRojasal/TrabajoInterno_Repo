@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TrabajoInterno_Api.Data
+﻿namespace TrabajoInterno_Api_Imagen.Data
 {
     public interface IConnectionMdbSettings
     {
