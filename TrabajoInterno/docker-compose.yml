@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  trabajointerno_api_persona:
+    image: ${DOCKER_REGISTRY-}trabajointernoapipersona
+    build:
+      context: .
+      dockerfile: TrabajoInterno_Api_Persona/Dockerfile
+      
+  trabajointerno_api_imagen:
+    image: ${DOCKER_REGISTRY-}trabajointernoapiimagen
+    build:
+      context: .
+      dockerfile: TrabajoInterno_Api_Imagen/Dockerfile
+
+  trabajointerno_api:
+    image: ${DOCKER_REGISTRY-}trabajointernoapi
+    build:
+      context: .
+      dockerfile: TrabajoInterno_Api/Dockerfile
+
+networks:
+  default:
+    external:
+        name: microservice_net
+

@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using System.Text;
 using TrabajoInterno_Api_Persona.Data;
 using TrabajoInterno_Api_Persona.Interfaces;
-using TrabajoInterno_Api_Persona.Remote.RemoteInterfaces;
+using TrabajoInterno_Api_Persona.Remote.RemoteInterface;
 using TrabajoInterno_Api_Persona.Remote.RemoteService;
 using TrabajoInterno_Api_Persona.Repository;
 using TrabajoInterno_Api_Persona.Services;
@@ -60,36 +60,40 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 );
 builder.Services.AddAuthorization();
 
-//Add inyeccion de DBContext Service
-
-builder.Services.AddDbContext<MySqlDbContext>(
-options =>
-{
-    options.UseMySql(builder.Configuration.GetConnectionString("MySQLTrabajoInternoAppCon"),
-    Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.28-mysql"));
-});
-
 //Add AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-//HttpClient
-
-builder.Services.AddHttpClient("Imagenes", config =>
-{
-    config.BaseAddress = new Uri(builder.Configuration["Services:Imagenes"]);
-});
 
 //Use Json
 builder.Services.AddMvc(option => option.EnableEndpointRouting = false)
     .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
 //Injeccion de dependencias
-
 builder.Services.AddScoped<IPersonaService, PersonaService>();
 builder.Services.AddScoped<IPersonaRepository, PersonaRepository>();
 builder.Services.AddScoped<IRemoteImagenService, RemoteImagenService>();
 builder.Services.AddSingleton(builder.Configuration);
 
+
+//Add inyeccion de DBContext Service
+
+builder.Services.AddDbContext<MySqlDbContext>(
+options =>
+{
+    string connectionString = builder.Configuration.GetConnectionString("MySQLTrabajoInternoAppCon");
+    options.UseMySql(connectionString,
+        ServerVersion.AutoDetect(connectionString),
+        mySqlOptions =>
+            mySqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 10,
+                maxRetryDelay: TimeSpan.FromSeconds(30),
+                errorNumbersToAdd: null));
+});
+
+//HttpClient
+builder.Services.AddHttpClient("Imagenes", config =>
+{
+    config.BaseAddress = new Uri(builder.Configuration["Services:Imagenes"]);
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

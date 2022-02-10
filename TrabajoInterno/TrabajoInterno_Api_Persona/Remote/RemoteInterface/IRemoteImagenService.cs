@@ -1,4 +1,4 @@
-﻿namespace TrabajoInterno_Api_Persona.Remote.RemoteInterfaces
+﻿namespace TrabajoInterno_Api_Persona.Remote.RemoteInterface
 {
     public interface IRemoteImagenService
     {

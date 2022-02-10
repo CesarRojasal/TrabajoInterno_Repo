@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using TrabajoInterno_Api_Persona.Remote.RemoteInterfaces;
+using TrabajoInterno_Api_Persona.Remote.RemoteInterface;
 
 namespace TrabajoInterno_Api_Persona.Remote.RemoteService
 {

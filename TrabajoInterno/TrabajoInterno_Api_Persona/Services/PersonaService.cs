@@ -2,10 +2,10 @@
 using TrabajoInterno_Api_Persona.DTOs;
 using TrabajoInterno_Api_Persona.Interfaces;
 using TrabajoInterno_Api_Persona.Model;
-using TrabajoInterno_Api_Persona.Remote.RemoteInterfaces;
+using TrabajoInterno_Api_Persona.Remote.RemoteInterface;
 
 namespace TrabajoInterno_Api_Persona.Services
-{ 
+{
     public class PersonaService : IPersonaService
     {
         private readonly IPersonaRepository personaRepository;
