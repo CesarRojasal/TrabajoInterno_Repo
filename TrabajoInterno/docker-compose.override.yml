@@ -4,29 +4,26 @@ services:
   trabajointerno_api_persona:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-      #-Services__Imagenes=
+      - ASPNETCORE_URLS=http://+:80
+      - Services_Imagenes=http://trabajointerno_api_imagen
     ports:
-      - "80"
-      - "443"
+      - "6104:80"
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
   trabajointerno_api_imagen:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=http://+:80
     ports:
-      - "80"
-      - "443"
+      - "6105:80"
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
   trabajointerno_api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=http://+:80
     ports:
-      - "80"
-      - "443"
+      - "6106:80"
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
