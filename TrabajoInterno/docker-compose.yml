@@ -19,8 +19,15 @@ services:
       context: .
       dockerfile: TrabajoInterno_Api/Dockerfile
 
+  trabajointerno_api_gateway:
+    image: ${DOCKER_REGISTRY-}trabajointernoapigateway
+    build:
+      context: .
+      dockerfile: TrabajoInterno_Api_Gateway/Dockerfile
+
 networks:
   default:
     external:
         name: microservice_net
+
 

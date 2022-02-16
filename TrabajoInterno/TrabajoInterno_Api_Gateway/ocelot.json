@@ -1,0 +1,111 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/persona",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "trabajointerno_api_persona",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/persona",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "Key": "PersonaTotal"
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/persona/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "trabajointerno_api_persona",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/persona/{id}",
+      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+      "DelegatingHandlers": [
+        "PersonaHandler"
+      ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/persona/ByEdadMayorIgual/{Edad}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "trabajointerno_api_persona",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/persona/ByEdadMayorIgual/{Edad}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/persona/ByIdentificacion/{identificacion}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "trabajointerno_api_persona",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/persona/ByIdentificacion/{identificacion}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Imagen",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "trabajointerno_api_imagen",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/imagen",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "Key": "ImagenTotal"
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Imagen/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "trabajointerno_api_imagen",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/imagen/{id}",
+      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "trabajointerno_api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Login",
+      "UpstreamHttpMethod": [ "Post" ]
+    }
+  ],
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "PersonaTotal",
+        "ImagenTotal"
+      ],
+      "UpstreamPathTemplate": "/PersonaImagen"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:6107"
+  }
+}

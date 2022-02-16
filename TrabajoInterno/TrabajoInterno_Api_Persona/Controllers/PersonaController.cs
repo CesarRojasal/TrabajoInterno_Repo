@@ -1,11 +1,9 @@
 ﻿#nullable disable
-using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TrabajoInterno_Api_Persona.DTOs;
 using TrabajoInterno_Api_Persona.Interfaces;
-using TrabajoInterno_Api_Persona.Model;
 
 namespace TrabajoInterno_Api_Persona.Controllers
 {
