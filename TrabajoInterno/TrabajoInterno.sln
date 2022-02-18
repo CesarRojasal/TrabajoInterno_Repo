@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrabajoInterno_Test_Persona
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8C0CDBBC-7075-419E-9C85-74473B5FFFEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrabajoInterno_Api_Gateway", "TrabajoInterno_Api_Gateway\TrabajoInterno_Api_Gateway.csproj", "{1A09D646-5EE6-4B92-99D0-4CDDFCBE4213}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrabajoInterno_Api_Gateway", "TrabajoInterno_Api_Gateway\TrabajoInterno_Api_Gateway.csproj", "{1A09D646-5EE6-4B92-99D0-4CDDFCBE4213}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrabajoInterno_RabbitMq_Bus", "..\TrabajoInterno_RabbitMq_Bus\TrabajoInterno_RabbitMq_Bus.csproj", "{625BF764-452C-4FBC-AB0C-7329D6DEB76E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{1A09D646-5EE6-4B92-99D0-4CDDFCBE4213}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A09D646-5EE6-4B92-99D0-4CDDFCBE4213}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A09D646-5EE6-4B92-99D0-4CDDFCBE4213}.Release|Any CPU.Build.0 = Release|Any CPU
+		{625BF764-452C-4FBC-AB0C-7329D6DEB76E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{625BF764-452C-4FBC-AB0C-7329D6DEB76E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{625BF764-452C-4FBC-AB0C-7329D6DEB76E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{625BF764-452C-4FBC-AB0C-7329D6DEB76E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

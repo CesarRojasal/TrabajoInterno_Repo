@@ -13,7 +13,7 @@ namespace TrabajoInterno_Api_Persona.DTOs
         public string? Apellido { get; set; }
 
         [Required(ErrorMessage = "El campo  Identificacion es requerido")]
-        public string? Identificacion { get; set; }
+        public string Identificacion { get; set; } = String.Empty;
 
         [Required(ErrorMessage = "El campo  Edad es requerido")]
         public int Edad { get; set; }
@@ -23,6 +23,5 @@ namespace TrabajoInterno_Api_Persona.DTOs
 
         [Required(ErrorMessage = "El campo  Correo es requerido")]
         public string? Correo { get; set; }
-        //public string PersonaGuid { get; set; } = Guid.NewGuid().ToString();
     }
 }

@@ -16,12 +16,12 @@ namespace TrabajoInterno_Test
         #region Property
         private readonly PersonaController personaController;
         private readonly Mock<IPersonaService> mockService;
-        private readonly PersonaDto persona = new()
+        private readonly PersonaDto persona = new PersonaDto()
         {
             Nombre = "Nombre", Apellido = "Apellido", Edad = 50, Correo = "Correo",
                 CiudadNacimiento = "Ciudad Nacimiento", Identificacion = "CC 01"
             };
-        private readonly PersonaDto personaRes = new()
+        private readonly PersonaDto personaRes = new PersonaDto()
         {
             IdPersona = 1, Nombre = "Nombre", Apellido = "Apellido", Edad = 50, Correo = "Correo",
                 CiudadNacimiento = "Ciudad Nacimiento", Identificacion = "CC 01"
@@ -31,7 +31,6 @@ namespace TrabajoInterno_Test
         public PersonaControllerTest()
         {
             mockService = new Mock<IPersonaService>();
-            Mock<IMapper> mockMapper = new();
 
             personaController = new PersonaController(mockService.Object);
         }

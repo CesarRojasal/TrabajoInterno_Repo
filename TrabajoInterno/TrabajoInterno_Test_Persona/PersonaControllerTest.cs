@@ -31,8 +31,6 @@ namespace TrabajoInterno_Test_Persona
         public PersonaControllerTest()
         {
             mockService = new Mock<IPersonaService>();
-            Mock<IMapper> mockMapper = new();
-
             personaController = new PersonaController(mockService.Object);
         }
         [Fact]

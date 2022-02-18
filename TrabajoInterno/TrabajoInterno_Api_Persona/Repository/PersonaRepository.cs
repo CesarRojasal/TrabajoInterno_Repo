@@ -2,12 +2,15 @@
 using TrabajoInterno_Api_Persona.Data;
 using TrabajoInterno_Api_Persona.Interfaces;
 using TrabajoInterno_Api_Persona.Model;
+using TrabajoInterno_RabbitMq_Bus.BusRabbit;
+using TrabajoInterno_RabbitMq_Bus.EventoQueue;
 
 namespace TrabajoInterno_Api_Persona.Repository
 {
     public class PersonaRepository : IPersonaRepository
     {
-        protected readonly MySqlDbContext mySqlDbContext;
+        private readonly MySqlDbContext mySqlDbContext;
+        
         public PersonaRepository(MySqlDbContext mySqlDbContext)
         {
             this.mySqlDbContext = mySqlDbContext;

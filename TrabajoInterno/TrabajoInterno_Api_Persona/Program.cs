@@ -1,9 +1,10 @@
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using System.Reflection;
 using System.Text;
 using TrabajoInterno_Api_Persona.Data;
 using TrabajoInterno_Api_Persona.Interfaces;
@@ -11,12 +12,18 @@ using TrabajoInterno_Api_Persona.Remote.RemoteInterface;
 using TrabajoInterno_Api_Persona.Remote.RemoteService;
 using TrabajoInterno_Api_Persona.Repository;
 using TrabajoInterno_Api_Persona.Services;
+using TrabajoInterno_RabbitMq_Bus.BusRabbit;
+using TrabajoInterno_RabbitMq_Bus.Implement;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
+
+//Use RabbitMQ
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddTransient<IRabbitEventBus, RabbitEventBus>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

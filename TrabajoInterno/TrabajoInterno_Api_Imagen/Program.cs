@@ -1,12 +1,18 @@
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using System.Reflection;
 using System.Text;
 using TrabajoInterno_Api_Imagen.Data;
 using TrabajoInterno_Api_Imagen.Interfaces;
+using TrabajoInterno_Api_Imagen.RabbitManejador;
 using TrabajoInterno_Api_Imagen.Repository;
+using TrabajoInterno_RabbitMq_Bus.BusRabbit;
+using TrabajoInterno_RabbitMq_Bus.EventoQueue;
+using TrabajoInterno_RabbitMq_Bus.Implement;
 using TrabajoInterno_Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +20,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+//Use Rabbitmq 
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+
+builder.Services.AddTransient<IEventoManejador<EmailEventoQueue>, EmailEventoManejador>();
+builder.Services.AddTransient<IRabbitEventBus, RabbitEventBus>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -83,6 +96,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+var eventBus = ((IApplicationBuilder)app).ApplicationServices.GetRequiredService<IRabbitEventBus>();
+eventBus.Subscribe<EmailEventoQueue, EmailEventoManejador>();
 
 app.UseAuthorization();
 app.UseAuthentication();
