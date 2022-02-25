@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: mysqldb_pod
+ labels:
+  app: microservice_api_persona
+  name: mysqldb_pod
+spec:
+ containers:
+ - name: mysqldb-trabajointerno
+   image: mysql:latest
+   ports:
+   - containerPort: 3306
+   env:
+   - name: MYSQL_ROOT_PASSWORD
+     valueFrom:
+       secretKeyRef:
+         name: mysqldb-pass
+         key: mysqldb

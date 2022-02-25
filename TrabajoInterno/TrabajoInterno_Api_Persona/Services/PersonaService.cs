@@ -3,8 +3,8 @@ using TrabajoInterno_Api_Persona.DTOs;
 using TrabajoInterno_Api_Persona.Interfaces;
 using TrabajoInterno_Api_Persona.Model;
 using TrabajoInterno_Api_Persona.Remote.RemoteInterface;
-using TrabajoInterno_RabbitMq_Bus.BusRabbit;
-using TrabajoInterno_RabbitMq_Bus.EventoQueue;
+//using TrabajoInterno_RabbitMq_Bus.BusRabbit;
+//using TrabajoInterno_RabbitMq_Bus.EventoQueue;
 
 namespace TrabajoInterno_Api_Persona.Services
 {
@@ -13,14 +13,15 @@ namespace TrabajoInterno_Api_Persona.Services
         private readonly IPersonaRepository personaRepository;
         private readonly IRemoteImagenService imagenService;
         public readonly IMapper mapper;
-        private readonly IRabbitEventBus rabbitEventBus;
+        //private readonly IRabbitEventBus rabbitEventBus;
 
-        public PersonaService(IPersonaRepository personaRepository, IRemoteImagenService imagenService, IMapper mapper, IRabbitEventBus rabbitEventBus) 
+        //public PersonaService(IPersonaRepository personaRepository, IRemoteImagenService imagenService, IMapper mapper, IRabbitEventBus rabbitEventBus) 
+        public PersonaService(IPersonaRepository personaRepository, IRemoteImagenService imagenService, IMapper mapper) 
         {
             this.personaRepository = personaRepository;
             this.imagenService = imagenService;
             this.mapper = mapper;
-            this.rabbitEventBus = rabbitEventBus;
+            //this.rabbitEventBus = rabbitEventBus;
         }
 
 
@@ -41,7 +42,7 @@ namespace TrabajoInterno_Api_Persona.Services
             var persona = await personaRepository.GetById(id);
             if (persona == null)
                 throw new Exception("Persona No Encontrada");
-            rabbitEventBus.Publish(new EmailEventoQueue("cesar.rojasa@pragma.com", "Insert Persona", "Insert Persona RabbitMq"));
+            //rabbitEventBus.Publish(new EmailEventoQueue("cesar.rojasa@pragma.com", "Insert Persona", "Insert Persona RabbitMq"));
             var totalImagenes = await imagenService.DeleteImagenByIdPersona(persona.IdPersona);
             var result = await personaRepository.Delete(id);
             return (result, totalImagenes);

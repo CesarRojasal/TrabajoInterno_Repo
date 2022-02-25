@@ -5,7 +5,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "trabajointerno_api_persona",
+          "Host": "microservice_api_persona_service",
           "Port": 80
         }
       ],
@@ -19,7 +19,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "trabajointerno_api_persona",
+          "Host": "microservice_api_persona_service",
           "Port": 80
         }
       ],
@@ -35,7 +35,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "trabajointerno_api_persona",
+          "Host": "microservice_api_persona_service",
           "Port": 80
         }
       ],
@@ -61,7 +61,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "trabajointerno_api_imagen",
+          "Host": "microservice_api_imagen_service",
           "Port": 80
         }
       ],
@@ -75,7 +75,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "trabajointerno_api_imagen",
+          "Host": "microservice_api_imagen_service",
           "Port": 80
         }
       ],
@@ -88,7 +88,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "trabajointerno_api",
+          "Host": "microservice_api_service",
           "Port": 80
         }
       ],

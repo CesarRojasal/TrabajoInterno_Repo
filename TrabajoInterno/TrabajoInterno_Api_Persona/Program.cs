@@ -12,8 +12,8 @@ using TrabajoInterno_Api_Persona.Remote.RemoteInterface;
 using TrabajoInterno_Api_Persona.Remote.RemoteService;
 using TrabajoInterno_Api_Persona.Repository;
 using TrabajoInterno_Api_Persona.Services;
-using TrabajoInterno_RabbitMq_Bus.BusRabbit;
-using TrabajoInterno_RabbitMq_Bus.Implement;
+//using TrabajoInterno_RabbitMq_Bus.BusRabbit;
+//using TrabajoInterno_RabbitMq_Bus.Implement;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +22,7 @@ builder.Services.AddControllers();
 
 //Use RabbitMQ
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-builder.Services.AddTransient<IRabbitEventBus, RabbitEventBus>();
+//builder.Services.AddTransient<IRabbitEventBus, RabbitEventBus>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

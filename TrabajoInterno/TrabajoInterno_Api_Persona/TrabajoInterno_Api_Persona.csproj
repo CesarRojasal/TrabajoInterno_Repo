@@ -35,9 +35,5 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.15.1" />
   </ItemGroup>
- 
-  <ItemGroup>
-    <ProjectReference Include="..\..\TrabajoInterno_RabbitMq_Bus\TrabajoInterno_RabbitMq_Bus.csproj" />
-  </ItemGroup>
 
 </Project>

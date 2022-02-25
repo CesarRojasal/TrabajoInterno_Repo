@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: rabbitmq_web_pod
+ labels:
+  app: rabbitmq_web
+  type: microservice
+spec:
+ containers:
+ - name: rabbitmq_web
+   image: rabbitmq:3-management
+   ports:
+   - containerPort: 15672

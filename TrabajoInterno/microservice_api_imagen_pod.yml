@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: microservice_api_imagen_pod
+ labels:
+  app: microservice_api_imagen
+  type: microservice
+spec:
+ containers:
+ - name: microservice_imagen_app
+   image: cesarrojasa/trabajointernoapiimagen:latest
+   ports:
+    - containerPort: 80
+   env: 
+    - name: MongoDBTrabajoInternoSettings__Server
+      value: mongodb://cesar:mongo@mongodb_service:27017

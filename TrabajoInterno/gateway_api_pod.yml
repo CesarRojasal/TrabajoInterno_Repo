@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: gateway_api_pod
+ labels:
+  app: gateway_api
+  type: microservice
+spec:
+ containers:
+ - name: gateway_app
+   image: cesarrojasa/trabajointernoapigateway:latest
+   ports:
+   - containerPort: 80

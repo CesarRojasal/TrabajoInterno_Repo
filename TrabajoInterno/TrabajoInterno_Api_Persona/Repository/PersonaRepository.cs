@@ -2,8 +2,8 @@
 using TrabajoInterno_Api_Persona.Data;
 using TrabajoInterno_Api_Persona.Interfaces;
 using TrabajoInterno_Api_Persona.Model;
-using TrabajoInterno_RabbitMq_Bus.BusRabbit;
-using TrabajoInterno_RabbitMq_Bus.EventoQueue;
+//using TrabajoInterno_RabbitMq_Bus.BusRabbit;
+//using TrabajoInterno_RabbitMq_Bus.EventoQueue;
 
 namespace TrabajoInterno_Api_Persona.Repository
 {

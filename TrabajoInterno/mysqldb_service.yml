@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: mysqldb_service
+ labels:
+  name: mysqldb_service
+  app: database
+spect: 
+ type: LoadBalancer
+ ports:
+  - port: 27017
+    targetPort: 27017
+ selector: 
+  app: microservice_api_persona
+  name: mysqldb_pod

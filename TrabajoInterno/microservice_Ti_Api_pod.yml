@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+	name: microservice_Ti_Api_pod
+	labels:
+		app: TrabajoInterno_Api
+		type: microservice
+spect: 
+	containers: 
+	- name: microservice_Ti_Api
+	image: cesarrojasa/trabajointernoapi:latest
+	ports:
+		- containerPort: 80

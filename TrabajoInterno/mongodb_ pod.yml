@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: mongodb_pod
+ labels:
+  app: microservice_api_imagen
+  name : mongodb_pod
+spec:
+ containers:
+ - name: mongodb-trabajointerno
+   image: mongo:latest
+   command:
+   - /bin/bash
+   - -c 
+   env:
+   - name: MONGO_INITDB_ROOT_USERNAME
+     value:  "cesar"
+   - name: MONGO_INITDB_ROOT_PASSWORD
+     value: "mongo"
+   ports:
+   - containerPort: 27017
