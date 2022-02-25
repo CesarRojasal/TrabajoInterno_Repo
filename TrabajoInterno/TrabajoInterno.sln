@@ -19,7 +19,7 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrabajoInterno_Api_Gateway", "TrabajoInterno_Api_Gateway\TrabajoInterno_Api_Gateway.csproj", "{1A09D646-5EE6-4B92-99D0-4CDDFCBE4213}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrabajoInterno_RabbitMq_Bus", "..\TrabajoInterno_RabbitMq_Bus\TrabajoInterno_RabbitMq_Bus.csproj", "{625BF764-452C-4FBC-AB0C-7329D6DEB76E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrabajoInterno_RabbitMq_Bus", "TrabajoInterno_RabbitMq_Bus\TrabajoInterno_RabbitMq_Bus.csproj", "{625BF764-452C-4FBC-AB0C-7329D6DEB76E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kubernets", "Kubernets", "{4F0BED2B-DA68-4E84-A49F-FDE49036636A}"
 	ProjectSection(SolutionItems) = preProject
