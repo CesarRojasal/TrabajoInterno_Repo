@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: mongo-deploy
+ name: mongodb-deploy
  labels: 
-  name: mongo-deploy
+  name: mongodb-deploy
   app: microservice
 spec:
  replicas: 1
  selector: 
   matchLabels:
    app: microservice-api-imagen
-   name : mongo-pod
+   name : mongodb-pod
  template:
   metadata:
    name: mongodb-pod
    labels:
     app: microservice-api-imagen
-    name : mongo-pod
+    name : mongodb-pod
   spec:
    containers:
-   - name: mongo-trabajointerno
+   - name: mongodb-trabajointerno
      image: mongo:latest
      command:
      - /bin/bash

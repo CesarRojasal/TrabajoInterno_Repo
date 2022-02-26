@@ -9,7 +9,7 @@ spec:
  replicas: 1
  selector: 
   matchLabels:
-   app: microservice-api-imagen
+   app: microservice-api-persona
    name : mysqldb-pod
  template:
   metadata:
