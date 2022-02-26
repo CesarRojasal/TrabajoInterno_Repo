@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
  name: microservice-api-persona-service
- label:
+ labels:
   name: microservice-api-persona-service
   app: microservice
 spec:
