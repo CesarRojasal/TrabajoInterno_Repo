@@ -2,7 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
  name: microservice-api-persona-service
- app: microservice
+ label:
+  name: microservice-api-persona-service
+  app: microservice
 spec:
  type: ClusterIp
  ports:
