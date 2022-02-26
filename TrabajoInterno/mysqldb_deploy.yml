@@ -6,26 +6,26 @@ metadata:
   name: mysqldb-deploy
   app: microservice_api_persona
 spec:
-  replicas: 1
-  selector: 
-   matchlabels:
-    app: microservice_api_imagen
-    name : mysqldb_pod
-  template:
-   metadata:
+ replicas: 1
+ selector: 
+  matchlabels:
+   app: microservice_api_imagen
+   name : mysqldb_pod
+ template:
+  metadata:
+   name: mysqldb_pod
+   labels:
+    app: microservice_api_persona
     name: mysqldb_pod
-    labels:
-     app: microservice_api_persona
-     name: mysqldb_pod
-   spec:
-    containers:
-     - name: mysqldb-trabajointerno
-       image: mysql:latest
-       ports:
-        - containerPort: 3306
-       env:
-        - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-           secretKeyRef:
-            name: mysql-pass
-            key: mysql
+  spec:
+   containers:
+    - name: mysqldb-trabajointerno
+      image: mysql:latest
+      ports:
+       - containerPort: 3306
+      env:
+       - name: MYSQL_ROOT_PASSWORD
+         valueFrom:
+          secretKeyRef:
+           name: mysql-pass
+           key: mysql

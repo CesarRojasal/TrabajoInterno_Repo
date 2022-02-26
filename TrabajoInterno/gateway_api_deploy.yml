@@ -11,15 +11,15 @@ spec:
   matchLabels:
    app: gateway_api
    type: microservice
-  template:
-   metadata:
-    name: gateway_api_pod
-    labels:
-     app: gateway_api
-     type: microservice
-   spec:
-    containers:
-    - name: gateway_app
-      image: cesarrojasa/trabajointernoapigateway:latest
-      ports:
-      - containerPort: 80
+ template:
+  metadata:
+   name: gateway_api_pod
+   labels:
+    app: gateway_api
+    type: microservice
+  spec:
+   containers:
+   - name: gateway_app
+     image: cesarrojasa/trabajointernoapigateway:latest
+     ports:
+     - containerPort: 80

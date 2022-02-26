@@ -11,15 +11,15 @@ spec:
   matchLabels:
    app: microservice_api
    type: microservice
-  template:
-   metadata:
-    name: microservice_api_pod
-    labels:
-     app: microservice_api
-     type: microservice
-   spec:
-    containers:
-    - name: microservice_app
-      image: cesarrojasa/trabajointernoapi:latest
-      ports:
-      - containerPort: 80
+ template:
+  metadata:
+   name: microservice_api_pod
+   labels:
+    app: microservice_api
+    type: microservice
+  spec:
+   containers:
+   - name: microservice_app
+     image: cesarrojasa/trabajointernoapi:latest
+     ports:
+     - containerPort: 80

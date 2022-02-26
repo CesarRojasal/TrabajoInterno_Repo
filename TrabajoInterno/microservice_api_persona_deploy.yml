@@ -11,18 +11,18 @@ spec:
   matchLabels:
    app: microservice_api_persona
    type: microservice
-  template:
-   metadata:
-    name: microservice_api_persona_pod
-    labels:
-     app: microservice_api_persona
-     type: microservice
-   spec:
-    containers:
-    - name: microservice_persona_app
-      image: cesarrojasa/trabajointernoapipersona:latest
-      ports:
-        - containerPort: 80
-      env: 
-        - name: ConnectionStrings__MySQLTrabajoInternoAppCon
-          value: Server=mysqldb_service;database=trabajointerno_mysql_db;user=root;password=0000
+ template:
+  metadata:
+   name: microservice_api_persona_pod
+   labels:
+    app: microservice_api_persona
+    type: microservice
+  spec:
+   containers:
+   - name: microservice_persona_app
+     image: cesarrojasa/trabajointernoapipersona:latest
+     ports:
+       - containerPort: 80
+     env: 
+       - name: ConnectionStrings__MySQLTrabajoInternoAppCon
+         value: Server=mysqldb_service;database=trabajointerno_mysql_db;user=root;password=0000
