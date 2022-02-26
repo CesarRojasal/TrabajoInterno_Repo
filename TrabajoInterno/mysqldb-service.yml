@@ -5,7 +5,7 @@ metadata:
  labels:
   name: mysqldb-service
   app: database
-spect: 
+spec: 
  type: LoadBalancer
  ports:
   - port: 27017
