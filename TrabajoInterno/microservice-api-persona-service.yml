@@ -6,7 +6,7 @@ metadata:
   name: microservice-api-persona-service
   app: microservice
 spec:
- type: ClusterIp
+ type: ClusterIP
  ports:
   - port: 80
     targetPort: 80
