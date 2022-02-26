@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
- name: microservice_api_persona_pod
+ name: microservice-api-persona-pod
  labels:
-  app: microservice_api_persona
+  app: microservice-api-persona
   type: microservice
 spec:
  containers:
- - name: microservice_persona_app
+ - name: microservice-persona-app
    image: cesarrojasa/trabajointernoapipersona:latest
    ports:
    - containerPort: 80

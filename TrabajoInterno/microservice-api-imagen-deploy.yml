@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: microservice_api_imagen_deploy
+ name: microservice-api-imagen-deploy
  labels: 
-  name: microservice_api_imagen_deploy
+  name: microservice-api-imagen-deploy
   app: microservice
 spec:
  replicas: 2
  selector: 
   matchLabels:
-   app: microservice_api_imagen
+   app: microservice-api-imagen
    type: microservice
  template:
   metadata:
-   name: microservice_api_imagen_pod
+   name: microservice-api-imagen-pod
    labels:
-    app: microservice_api_imagen
+    app: microservice-api-imagen
     type: microservice
   spec:
    containers:
-   - name: microservice_imagen_app
+   - name: microservice-imagen-app
      image: cesarrojasa/trabajointernoapiimagen:latest
      ports:
       - containerPort: 80

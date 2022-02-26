@@ -4,19 +4,19 @@ metadata:
  name: mysqldb-deploy
  labels: 
   name: mysqldb-deploy
-  app: microservice_api_persona
+  app: microservice-api-persona
 spec:
  replicas: 1
  selector: 
   matchlabels:
-   app: microservice_api_imagen
-   name : mysqldb_pod
+   app: microservice-api-imagen
+   name : mysqldb-pod
  template:
   metadata:
-   name: mysqldb_pod
+   name: mysqldb-pod
    labels:
-    app: microservice_api_persona
-    name: mysqldb_pod
+    app: microservice-api-persona
+    name: mysqldb-pod
   spec:
    containers:
     - name: mysqldb-trabajointerno

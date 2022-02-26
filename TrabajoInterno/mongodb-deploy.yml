@@ -9,14 +9,14 @@ spec:
  replicas: 1
  selector: 
   matchlabels:
-   app: microservice_api_imagen
-   name : mongo_pod
+   app: microservice-api-imagen
+   name : mongo-pod
  template:
   metadata:
-   name: mongodb_pod
+   name: mongodb-pod
    labels:
-    app: microservice_api_imagen
-    name : mongo_pod
+    app: microservice-api-imagen
+    name : mongo-pod
   spec:
    containers:
    - name: mongo-trabajointerno

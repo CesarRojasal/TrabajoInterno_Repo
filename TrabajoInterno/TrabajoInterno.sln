@@ -23,24 +23,24 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrabajoInterno_RabbitMq_Bus
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kubernets", "Kubernets", "{4F0BED2B-DA68-4E84-A49F-FDE49036636A}"
 	ProjectSection(SolutionItems) = preProject
-		gateway_api_deploy.yml = gateway_api_deploy.yml
-		gateway_api_pod.yml = gateway_api_pod.yml
-		gateway_api_service.yml = gateway_api_service.yml
-		microservice_api_deploy.yml = microservice_api_deploy.yml
-		microservice_api_imagen_deploy.yml = microservice_api_imagen_deploy.yml
-		microservice_api_imagen_pod.yml = microservice_api_imagen_pod.yml
-		microservice_api_imagen_service.yml = microservice_api_imagen_service.yml
-		microservice_api_persona_deploy.yml = microservice_api_persona_deploy.yml
-		microservice_api_persona_pod.yml = microservice_api_persona_pod.yml
-		microservice_api_persona_service.yml = microservice_api_persona_service.yml
-		microservice_api_pod.yml = microservice_api_pod.yml
-		microservice_api_service.yml = microservice_api_service.yml
-		mongodb_ pod.yml = mongodb_ pod.yml
-		mongodb_deploy.yml = mongodb_deploy.yml
-		mongodb_service.yml = mongodb_service.yml
-		mysqldb_deploy.yml = mysqldb_deploy.yml
-		mysqldb_pod.yml = mysqldb_pod.yml
-		mysqldb_service.yml = mysqldb_service.yml
+		gateway-api-deploy.yml = gateway-api-deploy.yml
+		gateway-api-pod.yml = gateway-api-pod.yml
+		gateway-api-service.yml = gateway-api-service.yml
+		microservice-api-deploy.yml = microservice-api-deploy.yml
+		microservice-api-imagen-deploy.yml = microservice-api-imagen-deploy.yml
+		microservice-api-imagen-pod.yml = microservice-api-imagen-pod.yml
+		microservice-api-imagen-service.yml = microservice-api-imagen-service.yml
+		microservice-api-persona-deploy.yml = microservice-api-persona-deploy.yml
+		microservice-api-persona-pod.yml = microservice-api-persona-pod.yml
+		microservice-api-persona-service.yml = microservice-api-persona-service.yml
+		microservice-api-pod.yml = microservice-api-pod.yml
+		microservice-api-service.yml = microservice-api-service.yml
+		mongodb- pod.yml = mongodb- pod.yml
+		mongodb-deploy.yml = mongodb-deploy.yml
+		mongodb-service.yml = mongodb-service.yml
+		mysqldb-deploy.yml = mysqldb-deploy.yml
+		mysqldb-pod.yml = mysqldb-pod.yml
+		mysqldb-service.yml = mysqldb-service.yml
 	EndProjectSection
 EndProject
 Global

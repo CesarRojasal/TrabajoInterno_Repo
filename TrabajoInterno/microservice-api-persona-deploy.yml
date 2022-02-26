@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: microservice_api_persona_deploy
+ name: microservice-api-persona-deploy
  labels: 
-  name: microservice_api_persona_deploy
+  name: microservice-api-persona-deploy
   app: microservice
 spec:
  replicas: 2
  selector: 
   matchLabels:
-   app: microservice_api_persona
+   app: microservice-api-persona
    type: microservice
  template:
   metadata:
-   name: microservice_api_persona_pod
+   name: microservice-api-persona-pod
    labels:
-    app: microservice_api_persona
+    app: microservice-api-persona
     type: microservice
   spec:
    containers:
-   - name: microservice_persona_app
+   - name: microservice-persona-app
      image: cesarrojasa/trabajointernoapipersona:latest
      ports:
        - containerPort: 80

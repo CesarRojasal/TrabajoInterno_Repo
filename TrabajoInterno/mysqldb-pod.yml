@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
- name: mysqldb_pod
+ name: mysqldb-pod
  labels:
-  app: microservice_api_persona
-  name: mysqldb_pod
+  app: microservice-api-persona
+  name: mysqldb-pod
 spec:
  containers:
  - name: mysqldb-trabajointerno

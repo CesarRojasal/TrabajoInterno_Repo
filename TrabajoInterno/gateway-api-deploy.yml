@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: microservice_api_deploy
+ name: gateway-api-deploy
  labels: 
-  name: microservice_api_deploy
+  name: gateway-api-deploy
   app: microservice
 spec:
  replicas: 2
  selector: 
   matchLabels:
-   app: microservice_api
+   app: gateway-api
    type: microservice
  template:
   metadata:
-   name: microservice_api_pod
+   name: gateway-api-pod
    labels:
-    app: microservice_api
+    app: gateway-api
     type: microservice
   spec:
    containers:
-   - name: microservice_app
-     image: cesarrojasa/trabajointernoapi:latest
+   - name: gateway-app
+     image: cesarrojasa/trabajointernoapigateway:latest
      ports:
      - containerPort: 80

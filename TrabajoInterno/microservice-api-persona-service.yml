@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
- name: microservice_api_persona_service
+ name: microservice-api-persona-service
  app: microservice
 spec:
  type: ClusterIp
@@ -9,6 +9,6 @@ spec:
   - port: 80
     targetPort: 80
  selector:
-  app: microservice_persona
+  app: microservice-persona
   type: microservice
   

@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
- name: microservice_api_imagen_pod
+ name: microservice-api-imagen-pod
  labels:
-  app: microservice_api_imagen
+  app: microservice-api-imagen
   type: microservice
 spec:
  containers:
- - name: microservice_imagen_app
+ - name: microservice-imagen-app
    image: cesarrojasa/trabajointernoapiimagen:latest
    ports:
     - containerPort: 80
