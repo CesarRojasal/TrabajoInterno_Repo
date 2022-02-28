@@ -10,10 +10,7 @@ spec:
  - name: mysqldb-trabajointerno
    image: mysql:latest
    ports:
-   - containerPort: 3306
+    - containerPort: 3306
    env:
-   - name: MYSQL_ROOT_PASSWORD
-     valueFrom:
-       secretKeyRef:
-         name: mysqldb-pass
-         key: mysqldb
+    - name: MYSQL_ROOT_PASSWORD
+      value: 0000
