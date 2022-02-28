@@ -6,7 +6,7 @@ metadata:
   name: gateway-api-deploy
   app: microservice
 spec:
- replicas: 2
+ replicas: 1
  selector: 
   matchLabels:
    app: gateway-api
