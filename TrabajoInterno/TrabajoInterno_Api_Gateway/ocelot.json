@@ -104,8 +104,9 @@
       ],
       "UpstreamPathTemplate": "/PersonaImagen"
     }
-  ],
-  "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:6107"
-  }
+  ]
+  //,
+  //"GlobalConfiguration": {
+  //  "BaseUrl": "https://localhost:6107"
+  //}
 }
