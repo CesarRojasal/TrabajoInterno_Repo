@@ -5,7 +5,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "microservice-persona-app",
+          "Host": "microservice-api-persona-service",
           "Port": 80
         }
       ],
@@ -19,7 +19,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "microservice-persona-app",
+          "Host": "microservice-api-persona-service",
           "Port": 80
         }
       ],
@@ -35,7 +35,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "microservice-persona-app",
+          "Host": "microservice-api-persona-service",
           "Port": 80
         }
       ],
@@ -61,7 +61,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "microservice-imagen-app",
+          "Host": "microservice-api-imagen-service",
           "Port": 80
         }
       ],
@@ -75,7 +75,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "microservice-imagen-app",
+          "Host": "microservice-api-imagen-service",
           "Port": 80
         }
       ],
@@ -88,7 +88,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "microservice-app",
+          "Host": "microservice-api-service",
           "Port": 80
         }
       ],
