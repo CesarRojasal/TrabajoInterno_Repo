@@ -20,20 +20,14 @@ spec:
   spec:
    containers:
     - name: mongo-trabajointerno
-      image: mongo:latest
+      image: mongo:5.0
       command:
         - /bin/bash
         - -c
       env:
        - name: MONGO_INITDB_ROOT_USERNAME
-         valueFrom:
-          secretKeyRef:
-            name: mongo-creds
-            key: cesar
+         value: "cesar"
        - name: MONGO_INITDB_ROOT_PASSWORD
-         valueFrom:
-          secretKeyRef:
-            name: mongo-creds
-            key: pass
+         value: "0000"
       ports:
        - containerPort: 27017
