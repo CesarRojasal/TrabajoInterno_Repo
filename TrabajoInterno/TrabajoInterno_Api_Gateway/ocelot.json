@@ -88,7 +88,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "microservice-api-deploy",
+          "Host": "microservice-api-service",
           "Port": 80
         }
       ],

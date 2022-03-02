@@ -19,7 +19,7 @@ spec:
     type: microservice
   spec:
    containers:
-   - name: microservice-imagen-app
+   - name: microservice-api-imagen
      image: cesarrojasa/trabajointernoapiimagen:latest
      ports:
       - containerPort: 80

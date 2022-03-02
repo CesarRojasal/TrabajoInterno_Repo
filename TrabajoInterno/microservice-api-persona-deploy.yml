@@ -19,7 +19,7 @@ spec:
     type: microservice
   spec:
    containers:
-   - name: microservice-persona-app
+   - name: microservice-api-persona
      image: cesarrojasa/trabajointernoapipersona:latest
      ports:
        - containerPort: 80

@@ -7,7 +7,7 @@ metadata:
   type: microservice
 spec:
  containers:
- - name: microservice-app
+ - name: microservice-api
    image: cesarrojasa/trabajointernoapi:latest
    ports:
    - containerPort: 80

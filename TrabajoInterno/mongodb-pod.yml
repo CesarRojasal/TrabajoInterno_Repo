@@ -4,7 +4,7 @@ metadata:
  name: mongodb-pod
  labels:
   app: microservice-api-imagen
-  name : mongodb-pod
+  name: mongodb-pod
 spec:
  containers:
   - name: mongo-trabajointerno

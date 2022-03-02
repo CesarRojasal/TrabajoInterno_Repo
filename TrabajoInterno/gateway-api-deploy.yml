@@ -19,7 +19,7 @@ spec:
     type: microservice
   spec:
    containers:
-   - name: gateway-app
+   - name: gateway-api
      image: cesarrojasa/trabajointernoapigateway:latest
      ports:
      - containerPort: 80
