@@ -14,3 +14,5 @@ spec:
    env: 
     - name: ConnectionStrings__MySQLTrabajoInternoAppCon
       value: Server=mysqldb-service;database=trabajointerno_mysql_db;user=root;password=0000
+    - name: Services__Imagenes
+      value: http://microservice-api-imagen-service
