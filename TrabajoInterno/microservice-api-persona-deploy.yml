@@ -25,4 +25,4 @@ spec:
        - containerPort: 80
      env: 
        - name: ConnectionStrings__MySQLTrabajoInternoAppCon
-         value: Server=mysqldb_service;database=trabajointerno_mysql_db;user=root;password=0000
+         value: Server=mysqldb-service;database=trabajointerno_mysql_db;user=root;password=0000
