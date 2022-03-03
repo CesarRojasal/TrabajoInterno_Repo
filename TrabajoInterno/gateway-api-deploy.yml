@@ -20,6 +20,6 @@ spec:
   spec:
    containers:
    - name: gateway-api
-     image: cesarrojasa/trabajointernoapigateway:latest
+     image: cesarrojasa/trabajointernoapigateway:v2.#{Buil.BuilId}#
      ports:
      - containerPort: 80

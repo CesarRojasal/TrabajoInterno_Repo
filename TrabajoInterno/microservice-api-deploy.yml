@@ -20,6 +20,6 @@ spec:
   spec:
    containers:
    - name: microservice-api
-     image: cesarrojasa/trabajointernoapi:latest
+     image: cesarrojasa/trabajointernoapi:v2.#{Buil.BuilId}#
      ports:
      - containerPort: 80
