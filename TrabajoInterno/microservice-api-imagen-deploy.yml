@@ -25,4 +25,4 @@ spec:
       - containerPort: 80
      env: 
       - name: MongoDBTrabajoInternoSettings__Server
-        value: mongodb://cesar:mongo@mongodb_service:27017
+        value: mongodb://mongodb-service:27017
