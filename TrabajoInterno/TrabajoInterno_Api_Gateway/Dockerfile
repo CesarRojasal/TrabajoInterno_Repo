@@ -9,7 +9,7 @@ WORKDIR /src
 COPY ["./TrabajoInterno/TrabajoInterno_Api_Gateway/TrabajoInterno_Api_Gateway.csproj", "TrabajoInterno_Api_Gateway/"]
 RUN dotnet restore "TrabajoInterno_Api_Gateway/TrabajoInterno_Api_Gateway.csproj"
 COPY . .
-WORKDIR "/src/TrabajoInterno_Api_Gateway"
+WORKDIR "/src/TrabajoInterno/TrabajoInterno_Api_Gateway"
 RUN dotnet build "TrabajoInterno_Api_Gateway.csproj" -c Release -o /app/build
 
 FROM build AS publish
