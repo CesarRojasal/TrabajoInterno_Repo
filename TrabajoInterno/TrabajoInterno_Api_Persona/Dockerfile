@@ -7,8 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["TrabajoInterno/TrabajoInterno_Api_Persona/TrabajoInterno_Api_Persona.csproj", "TrabajoInterno_Api_Persona/"]
-RUN dotnet restore "TrabajoInterno/TrabajoInterno_Api_Persona/TrabajoInterno_Api_Persona.csproj"
+COPY ["./TrabajoInterno/TrabajoInterno_Api_Persona/TrabajoInterno_Api_Persona.csproj", "TrabajoInterno_Api_Persona/"]
+RUN dotnet restore "./TrabajoInterno/TrabajoInterno_Api_Persona/TrabajoInterno_Api_Persona.csproj"
 COPY . .
 WORKDIR "/src/TrabajoInterno_Api_Persona"
 RUN dotnet build "TrabajoInterno_Api_Persona.csproj" -c Release -o /app/build
