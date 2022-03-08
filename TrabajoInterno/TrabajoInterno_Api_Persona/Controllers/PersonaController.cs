@@ -32,6 +32,7 @@ namespace TrabajoInterno_Api_Persona.Controllers
         }
 
         [HttpGet("ByEdadMayorIgual/{Edad}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<ActionResult<IEnumerable<PersonaDto>>> GetPersonaByEdadMayorIgual(int edad)
         {
             try { return new OkObjectResult(await personaService.GetPersonaByEdadMayorIgual(edad)); }
@@ -39,6 +40,7 @@ namespace TrabajoInterno_Api_Persona.Controllers
         }
 
         [HttpGet("ByIdentificacion/{identificacion}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<ActionResult<PersonaDto>> GetPersonaByIdentificacion(string identificacion)
         {
             try
@@ -51,6 +53,7 @@ namespace TrabajoInterno_Api_Persona.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<ActionResult<string>> Delete(string id)
         {
             try { 

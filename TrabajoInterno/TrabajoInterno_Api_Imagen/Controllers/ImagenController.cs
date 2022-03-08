@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TrabajoInterno_Api_Imagen.DTOs;
 using TrabajoInterno_Api_Imagen.Interfaces;
 
@@ -16,7 +18,6 @@ namespace TrabajoInterno_Api_Imagen.Controllers
         }
 
         [HttpGet]
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<ActionResult<IEnumerable<ImagenDto>>> GetAll()
         {
             try { return new OkObjectResult(await imagenService.GetAll()); }
@@ -31,7 +32,7 @@ namespace TrabajoInterno_Api_Imagen.Controllers
         }
 
         [HttpPost]
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<ActionResult<ImagenDto>> Post(ImagenDto imagenDto)
         {
             try { return new OkObjectResult(await imagenService.Insert(imagenDto));}
@@ -39,7 +40,7 @@ namespace TrabajoInterno_Api_Imagen.Controllers
         }
 
         [HttpPut("{id}")]
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<ActionResult<ImagenDto>> Put(ImagenDto imagenDto, string id)
         {
             try
@@ -52,6 +53,7 @@ namespace TrabajoInterno_Api_Imagen.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<ActionResult<string>> Delete(string id)
         {
             try{ return await imagenService.GetById(id) != null
